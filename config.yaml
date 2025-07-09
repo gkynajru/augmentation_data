@@ -1,0 +1,184 @@
+# Vietnamese SLU Data Augmentation Configuration
+# ==============================================
+
+# Data paths
+data:
+  input_dir: "data/input"
+  output_dir: "data/output"
+  examples_dir: "data/examples"
+
+# Augmentation settings
+augmentation:
+  # Target rare categories for augmentation
+  target_samples_per_rare_entity: 100
+  min_entity_frequency: 50
+  min_intent_frequency: 100
+  
+  # Generation parameters
+  max_variations_per_sample: 3
+  sample_augmentation_methods:
+    - "synonym_replacement"
+    - "politeness_addition" 
+    - "sentence_restructuring"
+    - "time_variation"
+  
+  # Sampling strategy
+  augment_rare_intents: true
+  augment_rare_entities: true
+  balanced_sampling: true
+
+# Quality control
+quality_control:
+  # Length constraints
+  min_length_ratio: 0.7  # Augmented can be 70% of original length
+  max_length_ratio: 2.0  # Augmented can be 200% of original length
+  
+  # Content validation
+  require_vietnamese_characters: true
+  check_entity_preservation: true
+  validate_intent_consistency: true
+  
+  # Review process
+  require_human_review: true
+  auto_approve_threshold: 4.5  # Auto-approve if both quality + naturalness >= 4.5
+  min_approval_scores:
+    quality: 3.0
+    naturalness: 3.0
+
+# Vietnamese language settings
+vietnamese:
+  # Regional variations
+  enable_regional_dialects: false
+  include_southern_variants: true
+  include_northern_variants: true
+  include_central_variants: false
+  
+  # Politeness and formality
+  politeness_level: "mixed"  # Options: formal, informal, mixed
+  include_honorifics: true
+  
+  # Augmentation techniques
+  synonym_replacement:
+    device_synonyms: true
+    location_synonyms: true
+    action_synonyms: true
+    time_synonyms: true
+  
+  sentence_restructuring:
+    move_time_expressions: true
+    move_location_expressions: true
+    add_discourse_markers: false
+
+# Device and location vocabularies
+vocabularies:
+  devices:
+    # Air conditioning
+    "máy lạnh": ["điều hòa", "máy điều hòa", "AC"]
+    "điều hòa": ["máy lạnh", "máy điều hòa không khí"]
+    
+    # Lighting
+    "đèn": ["bóng đèn", "thiết bị chiếu sáng"]
+    "bóng đèn": ["đèn", "đèn điện"]
+    "đèn led": ["đèn LED", "bóng đèn LED"]
+    
+    # Kitchen appliances
+    "lò vi sóng": ["lò nướng", "máy nướng"]
+    "tủ lạnh": ["tủ đông", "máy làm lạnh"]
+    "máy rửa bát": ["máy rửa chén", "thiết bị rửa bát"]
+    
+    # Entertainment
+    "tivi": ["ti vi", "TV", "màn hình tivi"]
+    "radio": ["máy radio", "đài", "thiết bị phát thanh"]
+    
+    # Others
+    "quạt": ["máy quạt", "quạt điện"]
+    "camera": ["máy quay", "thiết bị giám sát"]
+  
+  locations:
+    "phòng ngủ": ["buồng ngủ", "phòng nghỉ"]
+    "phòng khách": ["phòng tiếp khách", "sảnh", "phòng sinh hoạt"]
+    "nhà bếp": ["bếp", "phòng bếp", "khu vực nấu ăn", "Khu vực ăn uống"]
+    "nhà tắm": ["phòng tắm", "phòng vệ sinh", "toilet"]
+    "phòng làm việc": ["văn phòng", "phòng học", "phòng đọc sách"]
+    "garage": ["nhà xe", "ga ra", "chỗ để xe", "nhà để xe"]
+    "sân": ["sân nhà", "khuôn viên"]
+    "ban công": ["sân thượng", "hiên nhà"]
+  
+  actions:
+    "bật": ["mở", "kích hoạt", "khởi động", "bắt đầu"]
+    "tắt": ["đóng", "ngắt", "dừng", "tắt đi"]
+    "mở": ["bật", "kích hoạt", "khởi động"]
+    "đóng": ["tắt", "ngắt", "dừng"]
+    "tăng": ["nâng", "tăng lên", "điều chỉnh lên"]
+    "giảm": ["hạ", "giảm xuống", "điều chỉnh xuống"]
+    "kiểm tra": ["xem", "check", "tra cứu"]
+    "điều chỉnh": ["thay đổi", "chỉnh sửa", "cài đặt"]
+  
+  politeness:
+    prefixes: ["Làm ơn", "Xin hãy", "Bạn ơi", "Anh/chị ơi", "Giúp tôi", "Có thể"]
+    suffixes: ["nhé", "được không", "giúp tôi", "với", "được chứ", "nha", "đi"]
+  
+  time_expressions:
+    "bây giờ": ["ngay bây giờ", "lúc này", "hiện tại"]
+    "sau": ["sau đó", "tiếp theo", "kế tiếp"]
+    "trước": ["trước đó", "lúc trước"]
+    "sáng": ["buổi sáng", "sáng sớm"]
+    "chiều": ["buổi chiều", "chiều tối"]
+    "tối": ["buổi tối", "tối muộn"]
+    "đêm": ["ban đêm", "đêm khuya"]
+
+# Integration settings
+integration:
+  strategy: "balanced"  # Options: all, balanced, selective
+  preserve_original_data: true
+  add_augmentation_metadata: true
+  output_format: "jsonl"  # Options: jsonl, json, csv
+  
+  validation:
+    check_duplicates: true
+    validate_entities: true
+    verify_intent_consistency: true
+
+# Logging and monitoring
+logging:
+  level: "INFO"  # Options: DEBUG, INFO, WARNING, ERROR
+  file: "logs/augmentation.log"
+  console: true
+  
+  track_metrics:
+    - generation_rate
+    - quality_scores
+    - approval_rates
+    - integration_success
+
+# Dashboard settings
+dashboard:
+  port: 8000
+  samples_per_page: 20
+  auto_save_interval: 30  # seconds
+  
+  display:
+    show_entities: true
+    show_confidence_scores: false
+    highlight_changes: true
+    
+  export:
+    formats: ["csv", "json"]
+    include_metadata: true
+
+# Performance settings
+performance:
+  batch_size: 100
+  parallel_processing: false  # Set to true for faster processing
+  max_workers: 4
+  
+  memory:
+    limit_mb: 4096
+    cache_results: true
+
+# Testing and development
+testing:
+  enable_test_mode: false
+  test_sample_size: 10
+  mock_human_review: false
+  skip_quality_checks: false

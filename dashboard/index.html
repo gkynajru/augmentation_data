@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vietnamese SLU Augmentation Review</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .stats-panel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+            display: block;
+        }
+        
+        .stat-label {
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .controls {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .controls-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .control-group label {
+            font-weight: 500;
+            color: #555;
+        }
+        
+        select, input[type="text"], input[type="file"] {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #5a6fd8;
+        }
+        
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background: #218838;
+        }
+        
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .btn-danger:hover {
+            background: #c82333;
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+        
+        .progress-bar {
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+            height: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(90deg, #28a745, #20c997);
+            height: 100%;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+        
+        .samples-container {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .sample-item {
+            border-bottom: 1px solid #eee;
+            padding: 25px;
+            transition: background-color 0.2s;
+        }
+        
+        .sample-item:last-child {
+            border-bottom: none;
+        }
+        
+        .sample-item:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .sample-item.approved {
+            border-left: 4px solid #28a745;
+            background-color: #f8fff9;
+        }
+        
+        .sample-item.rejected {
+            border-left: 4px solid #dc3545;
+            background-color: #fff5f5;
+        }
+        
+        .sample-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .sample-id {
+            background: #667eea;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        
+        .method-tag {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+        }
+        
+        .sentences-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .sentence-box {
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .sentence-header {
+            background: #f8f9fa;
+            padding: 10px 15px;
+            font-weight: bold;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #495057;
+        }
+        
+        .sentence-content {
+            padding: 15px;
+        }
+        
+        .sentence-text {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .intent-info {
+            margin-bottom: 10px;
+            color: #666;
+        }
+        
+        .entities {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        
+        .entity-tag {
+            background: #6f42c1;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.75em;
+        }
+        
+        .review-section {
+            border-top: 1px solid #dee2e6;
+            padding-top: 20px;
+            display: grid;
+            grid-template-columns: auto auto 1fr auto;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .score-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .score-label {
+            font-weight: 500;
+            color: #555;
+            min-width: 70px;
+        }
+        
+        .score-buttons {
+            display: flex;
+            gap: 3px;
+        }
+        
+        .score-btn {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        
+        .score-btn:hover {
+            background: #f0f0f0;
+        }
+        
+        .score-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+        
+        .comments-input {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: vertical;
+            font-family: inherit;
+            min-height: 40px;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #666;
+        }
+        
+        .empty-state h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .file-drop-zone {
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            margin: 20px 0;
+            transition: border-color 0.3s;
+        }
+        
+        .file-drop-zone.dragover {
+            border-color: #667eea;
+            background-color: #f0f4ff;
+        }
+        
+        @media (max-width: 768px) {
+            .sentences-comparison {
+                grid-template-columns: 1fr;
+            }
+            
+            .review-section {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .controls-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🇻🇳 Vietnamese SLU Augmentation Review</h1>
+            <p>Review and approve augmented samples for training</p>
+        </div>
+        
+        <div class="stats-panel">
+            <div class="stat-card">
+                <span class="stat-number" id="totalSamples">0</span>
+                <div class="stat-label">Total Samples</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" id="reviewedSamples">0</span>
+                <div class="stat-label">Reviewed</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" id="approvedSamples">0</span>
+                <div class="stat-label">Approved</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" id="rejectedSamples">0</span>
+                <div class="stat-label">Rejected</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" id="approvalRate">0%</span>
+                <div class="stat-label">Approval Rate</div>
+            </div>
+        </div>
+        
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        
+        <div class="controls">
+            <div class="controls-row">
+                <div class="control-group">
+                    <label>Load CSV:</label>
+                    <input type="file" id="csvFileInput" accept=".csv" />
+                </div>
+                
+                <div class="control-group">
+                    <label>Filter Method:</label>
+                    <select id="methodFilter">
+                        <option value="">All Methods</option>
+                        <option value="synonym_replacement">Synonym Replacement</option>
+                        <option value="politeness_addition">Politeness Addition</option>
+                        <option value="sentence_restructuring">Sentence Restructuring</option>
+                        <option value="time_variation">Time Variation</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label>Filter Status:</label>
+                    <select id="statusFilter">
+                        <option value="">All Statuses</option>
+                        <option value="unreviewed">Unreviewed</option>
+                        <option value="approved">Approved</option>
+                        <option value="rejected">Rejected</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label>Search:</label>
+                    <input type="text" id="searchInput" placeholder="Search sentences..." />
+                </div>
+            </div>
+            
+            <div class="controls-row">
+                <button class="btn btn-success" id="autoApproveBtn">Auto-Approve High Quality</button>
+                <button class="btn btn-secondary" id="exportBtn">Export Results</button>
+                <button class="btn btn-primary" id="saveProgressBtn">Save Progress</button>
+                <span id="autoSaveStatus" style="color: #666; font-size: 0.9em;"></span>
+            </div>
+        </div>
+        
+        <div class="samples-container" id="samplesContainer">
+            <div class="empty-state">
+                <h3>No Data Loaded</h3>
+                <p>Please load a CSV file to start reviewing samples.</p>
+                <div class="file-drop-zone" id="fileDropZone">
+                    <p>📁 Drag & drop your CSV file here or click to browse</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class AugmentationReviewer {
+            constructor() {
+                this.samples = [];
+                this.filteredSamples = [];
+                this.currentFilters = {
+                    method: '',
+                    status: '',
+                    search: ''
+                };
+                
+                this.initializeEventListeners();
+                this.startAutoSave();
+            }
+            
+            initializeEventListeners() {
+                // File input
+                document.getElementById('csvFileInput').addEventListener('change', (e) => {
+                    this.handleFileSelect(e.target.files[0]);
+                });
+                
+                // Drag and drop
+                const dropZone = document.getElementById('fileDropZone');
+                dropZone.addEventListener('click', () => {
+                    document.getElementById('csvFileInput').click();
+                });
+                
+                dropZone.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    dropZone.classList.add('dragover');
+                });
+                
+                dropZone.addEventListener('dragleave', () => {
+                    dropZone.classList.remove('dragover');
+                });
+                
+                dropZone.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    dropZone.classList.remove('dragover');
+                    this.handleFileSelect(e.dataTransfer.files[0]);
+                });
+                
+                // Filters
+                document.getElementById('methodFilter').addEventListener('change', (e) => {
+                    this.currentFilters.method = e.target.value;
+                    this.applyFilters();
+                });
+                
+                document.getElementById('statusFilter').addEventListener('change', (e) => {
+                    this.currentFilters.status = e.target.value;
+                    this.applyFilters();
+                });
+                
+                document.getElementById('searchInput').addEventListener('input', (e) => {
+                    this.currentFilters.search = e.target.value.toLowerCase();
+                    this.applyFilters();
+                });
+                
+                // Buttons
+                document.getElementById('autoApproveBtn').addEventListener('click', () => {
+                    this.autoApproveHighQuality();
+                });
+                
+                document.getElementById('exportBtn').addEventListener('click', () => {
+                    this.exportResults();
+                });
+                
+                document.getElementById('saveProgressBtn').addEventListener('click', () => {
+                    this.saveProgress();
+                });
+            }
+            
+            handleFileSelect(file) {
+                if (!file || !file.name.endsWith('.csv')) {
+                    alert('Please select a CSV file');
+                    return;
+                }
+                
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    this.parseCSV(e.target.result);
+                };
+                reader.readAsText(file);
+            }
+            
+            parseCSV(csvText) {
+                const lines = csvText.split('\n');
+                const headers = lines[0].split(',').map(h => h.trim().replace(/"/g, ''));
+                
+                this.samples = [];
+                
+                for (let i = 1; i < lines.length; i++) {
+                    const line = lines[i].trim();
+                    if (!line) continue;
+                    
+                    const values = this.parseCSVLine(line);
+                    if (values.length >= headers.length) {
+                        const sample = {};
+                        headers.forEach((header, index) => {
+                            sample[header] = values[index] || '';
+                        });
+                        sample._index = i - 1;
+                        this.samples.push(sample);
+                    }
+                }
+                
+                console.log(`Loaded ${this.samples.length} samples`);
+                this.applyFilters();
+                this.updateStats();
+                this.renderSamples();
+            }
+            
+            parseCSVLine(line) {
+                const result = [];
+                let current = '';
+                let inQuotes = false;
+                
+                for (let i = 0; i < line.length; i++) {
+                    const char = line[i];
+                    if (char === '"') {
+                        inQuotes = !inQuotes;
+                    } else if (char === ',' && !inQuotes) {
+                        result.push(current.trim());
+                        current = '';
+                    } else {
+                        current += char;
+                    }
+                }
+                result.push(current.trim());
+                
+                return result.map(val => val.replace(/^"|"$/g, ''));
+            }
+            
+            applyFilters() {
+                this.filteredSamples = this.samples.filter(sample => {
+                    // Method filter
+                    if (this.currentFilters.method && 
+                        !sample.Augmentation_Method.includes(this.currentFilters.method)) {
+                        return false;
+                    }
+                    
+                    // Status filter
+                    if (this.currentFilters.status) {
+                        const isApproved = sample.Approved_Yes_No.toLowerCase() === 'yes';
+                        const isRejected = sample.Approved_Yes_No.toLowerCase() === 'no';
+                        const isUnreviewed = !isApproved && !isRejected;
+                        
+                        if (this.currentFilters.status === 'approved' && !isApproved) return false;
+                        if (this.currentFilters.status === 'rejected' && !isRejected) return false;
+                        if (this.currentFilters.status === 'unreviewed' && !isUnreviewed) return false;
+                    }
+                    
+                    // Search filter
+                    if (this.currentFilters.search) {
+                        const searchTerm = this.currentFilters.search;
+                        return sample.Original_Sentence.toLowerCase().includes(searchTerm) ||
+                               sample.Augmented_Sentence.toLowerCase().includes(searchTerm) ||
+                               sample.Original_Intent.toLowerCase().includes(searchTerm);
+                    }
+                    
+                    return true;
+                });
+                
+                this.renderSamples();
+            }
+            
+            renderSamples() {
+                const container = document.getElementById('samplesContainer');
+                
+                if (this.filteredSamples.length === 0) {
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <h3>No Samples Found</h3>
+                            <p>No samples match your current filters.</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                const samplesHTML = this.filteredSamples.map(sample => {
+                    return this.createSampleHTML(sample);
+                }).join('');
+                
+                container.innerHTML = samplesHTML;
+                
+                // Add event listeners to new elements
+                this.attachSampleEventListeners();
+            }
+            
+            createSampleHTML(sample) {
+                const isApproved = sample.Approved_Yes_No.toLowerCase() === 'yes';
+                const isRejected = sample.Approved_Yes_No.toLowerCase() === 'no';
+                
+                let statusClass = '';
+                if (isApproved) statusClass = 'approved';
+                else if (isRejected) statusClass = 'rejected';
+                
+                const originalEntities = this.parseEntities(sample.Original_Entities);
+                const augmentedEntities = this.parseEntities(sample.Augmented_Entities);
+                
+                return `
+                    <div class="sample-item ${statusClass}" data-sample-id="${sample.Sample_ID}">
+                        <div class="sample-header">
+                            <div class="sample-id">Sample #${sample.Sample_ID}</div>
+                            <div class="method-tag">${sample.Augmentation_Method}</div>
+                        </div>
+                        
+                        <div class="sentences-comparison">
+                            <div class="sentence-box">
+                                <div class="sentence-header">Original</div>
+                                <div class="sentence-content">
+                                    <div class="sentence-text">${sample.Original_Sentence}</div>
+                                    <div class="intent-info"><strong>Intent:</strong> ${sample.Original_Intent}</div>
+                                    <div class="entities">
+                                        ${originalEntities.map(e => `<span class="entity-tag">${e.type}: ${e.filler}</span>`).join('')}
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="sentence-box">
+                                <div class="sentence-header">Augmented</div>
+                                <div class="sentence-content">
+                                    <div class="sentence-text">${sample.Augmented_Sentence}</div>
+                                    <div class="intent-info"><strong>Intent:</strong> ${sample.Augmented_Intent}</div>
+                                    <div class="entities">
+                                        ${augmentedEntities.map(e => `<span class="entity-tag">${e.type}: ${e.filler}</span>`).join('')}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="review-section">
+                            <div class="score-group">
+                                <div class="score-label">Quality:</div>
+                                <div class="score-buttons">
+                                    ${[1,2,3,4,5].map(score => 
+                                        `<button class="score-btn ${sample.Quality_Score_1_5 == score ? 'active' : ''}" 
+                                                 data-score-type="quality" data-score="${score}">${score}</button>`
+                                    ).join('')}
+                                </div>
+                            </div>
+                            
+                            <div class="score-group">
+                                <div class="score-label">Natural:</div>
+                                <div class="score-buttons">
+                                    ${[1,2,3,4,5].map(score => 
+                                        `<button class="score-btn ${sample.Naturalness_Score_1_5 == score ? 'active' : ''}" 
+                                                 data-score-type="naturalness" data-score="${score}">${score}</button>`
+                                    ).join('')}
+                                </div>
+                            </div>
+                            
+                            <textarea class="comments-input" placeholder="Comments..." data-field="comments">${sample.Comments || ''}</textarea>
+                            
+                            <div class="action-buttons">
+                                <button class="btn btn-success" data-action="approve">✓ Approve</button>
+                                <button class="btn btn-danger" data-action="reject">✗ Reject</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            parseEntities(entitiesStr) {
+                try {
+                    if (!entitiesStr || entitiesStr.trim() === '') return [];
+                    const entities = JSON.parse(entitiesStr);
+                    return entities.map(e => ({
+                        type: e.type || 'unknown',
+                        filler: e.filler || 'unknown'
+                    }));
+                } catch (e) {
+                    return [];
+                }
+            }
+            
+            attachSampleEventListeners() {
+                // Score buttons
+                document.querySelectorAll('.score-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const sampleId = e.target.closest('.sample-item').dataset.sampleId;
+                        const scoreType = e.target.dataset.scoreType;
+                        const score = e.target.dataset.score;
+                        
+                        this.setScore(sampleId, scoreType, score);
+                    });
+                });
+                
+                // Action buttons
+                document.querySelectorAll('[data-action]').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const sampleId = e.target.closest('.sample-item').dataset.sampleId;
+                        const action = e.target.dataset.action;
+                        
+                        this.setApproval(sampleId, action);
+                    });
+                });
+                
+                // Comments
+                document.querySelectorAll('.comments-input').forEach(textarea => {
+                    textarea.addEventListener('input', (e) => {
+                        const sampleId = e.target.closest('.sample-item').dataset.sampleId;
+                        this.setComments(sampleId, e.target.value);
+                    });
+                });
+            }
+            
+            setScore(sampleId, scoreType, score) {
+                const sample = this.samples.find(s => s.Sample_ID == sampleId);
+                if (!sample) return;
+                
+                if (scoreType === 'quality') {
+                    sample.Quality_Score_1_5 = score;
+                } else if (scoreType === 'naturalness') {
+                    sample.Naturalness_Score_1_5 = score;
+                }
+                
+                // Update UI
+                const sampleElement = document.querySelector(`[data-sample-id="${sampleId}"]`);
+                const scoreButtons = sampleElement.querySelectorAll(`[data-score-type="${scoreType}"] .score-btn`);
+                scoreButtons.forEach(btn => {
+                    btn.classList.toggle('active', btn.dataset.score == score);
+                });
+                
+                this.updateStats();
+            }
+            
+            setApproval(sampleId, action) {
+                const sample = this.samples.find(s => s.Sample_ID == sampleId);
+                if (!sample) return;
+                
+                sample.Approved_Yes_No = action === 'approve' ? 'yes' : 'no';
+                
+                // Update UI
+                const sampleElement = document.querySelector(`[data-sample-id="${sampleId}"]`);
+                sampleElement.className = `sample-item ${action === 'approve' ? 'approved' : 'rejected'}`;
+                
+                this.updateStats();
+            }
+            
+            setComments(sampleId, comments) {
+                const sample = this.samples.find(s => s.Sample_ID == sampleId);
+                if (!sample) return;
+                
+                sample.Comments = comments;
+            }
+            
+            updateStats() {
+                const total = this.samples.length;
+                const approved = this.samples.filter(s => s.Approved_Yes_No.toLowerCase() === 'yes').length;
+                const rejected = this.samples.filter(s => s.Approved_Yes_No.toLowerCase() === 'no').length;
+                const reviewed = approved + rejected;
+                const approvalRate = reviewed > 0 ? Math.round((approved / reviewed) * 100) : 0;
+                
+                document.getElementById('totalSamples').textContent = total;
+                document.getElementById('reviewedSamples').textContent = reviewed;
+                document.getElementById('approvedSamples').textContent = approved;
+                document.getElementById('rejectedSamples').textContent = rejected;
+                document.getElementById('approvalRate').textContent = approvalRate + '%';
+                
+                // Update progress bar
+                const progress = total > 0 ? (reviewed / total) * 100 : 0;
+                document.getElementById('progressFill').style.width = progress + '%';
+            }
+            
+            autoApproveHighQuality() {
+                let autoApproved = 0;
+                
+                this.samples.forEach(sample => {
+                    const quality = parseInt(sample.Quality_Score_1_5) || 0;
+                    const naturalness = parseInt(sample.Naturalness_Score_1_5) || 0;
+                    
+                    if (quality >= 4 && naturalness >= 4 && sample.Approved_Yes_No !== 'yes') {
+                        sample.Approved_Yes_No = 'yes';
+                        autoApproved++;
+                    }
+                });
+                
+                alert(`Auto-approved ${autoApproved} high-quality samples (Quality ≥ 4, Naturalness ≥ 4)`);
+                this.applyFilters();
+                this.updateStats();
+            }
+            
+            exportResults() {
+                if (this.samples.length === 0) {
+                    alert('No data to export!');
+                    return;
+                }
+                
+                const headers = Object.keys(this.samples[0]);
+                const csvContent = [
+                    headers.join(','),
+                    ...this.samples.map(sample => 
+                        headers.map(header => {
+                            const value = sample[header] || '';
+                            return value.includes(',') ? `"${value.replace(/"/g, '""')}"` : value;
+                        }).join(',')
+                    )
+                ].join('\n');
+                
+                const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+                const link = document.createElement('a');
+                const url = URL.createObjectURL(blob);
+                link.setAttribute('href', url);
+                link.setAttribute('download', `reviewed_samples_${new Date().toISOString().split('T')[0]}.csv`);
+                link.click();
+            }
+            
+            saveProgress() {
+                localStorage.setItem('augmentation_review_progress', JSON.stringify(this.samples));
+                document.getElementById('autoSaveStatus').textContent = '✓ Progress saved';
+                setTimeout(() => {
+                    document.getElementById('autoSaveStatus').textContent = '';
+                }, 2000);
+            }
+            
+            startAutoSave() {
+                setInterval(() => {
+                    if (this.samples.length > 0) {
+                        this.saveProgress();
+                    }
+                }, 30000); // Auto-save every 30 seconds
+            }
+        }
+        
+        // Initialize the reviewer
+        const reviewer = new AugmentationReviewer();
+    </script>
+</body>
+</html>
