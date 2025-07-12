@@ -3,106 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vietnamese SLU Augmentation Review</title>
+    <title>Vietnamese SLU Augmentation Review Dashboard</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: #f5f7fa;
-            color: #333;
-            line-height: 1.6;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
         }
         
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
+            background: white;
             padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px;
-            border-radius: 10px;
+        h1 {
+            color: #333;
             margin-bottom: 20px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         
-        .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-        
-        .header p {
-            font-size: 1.1em;
-            opacity: 0.9;
-        }
-        
-        .stats-panel {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        .stats-row {
+            display: flex;
             gap: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
         }
         
         .stat-card {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            flex: 1;
+            min-width: 150px;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
             text-align: center;
         }
         
-        .stat-number {
-            font-size: 2em;
-            font-weight: bold;
-            color: #667eea;
-            display: block;
+        .stat-card h3 {
+            margin: 0 0 10px 0;
+            font-size: 14px;
+            color: #666;
         }
         
-        .stat-label {
-            color: #666;
-            margin-top: 5px;
+        .stat-card .value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: #4caf50;
+            transition: width 0.3s ease;
         }
         
         .controls {
-            background: white;
+            background: #f8f9fa;
             padding: 20px;
-            border-radius: 8px;
+            border-radius: 6px;
             margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         
         .controls-row {
             display: flex;
-            flex-wrap: wrap;
             gap: 15px;
-            align-items: center;
             margin-bottom: 15px;
+            align-items: center;
+            flex-wrap: wrap;
         }
         
         .control-group {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
         
-        .control-group label {
-            font-weight: 500;
+        label {
+            font-weight: bold;
             color: #555;
         }
         
-        select, input[type="text"], input[type="file"] {
-            padding: 8px 12px;
+        input[type="file"], input[type="text"], select {
+            padding: 8px;
             border: 1px solid #ddd;
             border-radius: 4px;
-            font-size: 14px;
         }
         
         .btn {
@@ -110,231 +106,189 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 14px;
-            font-weight: 500;
-            transition: all 0.2s;
-            text-decoration: none;
-            display: inline-block;
+            font-weight: bold;
+            transition: background-color 0.3s;
         }
         
         .btn-primary {
-            background: #667eea;
+            background: #2196f3;
             color: white;
         }
         
         .btn-primary:hover {
-            background: #5a6fd8;
+            background: #1976d2;
         }
         
         .btn-success {
-            background: #28a745;
+            background: #4caf50;
             color: white;
         }
         
         .btn-success:hover {
-            background: #218838;
-        }
-        
-        .btn-danger {
-            background: #dc3545;
-            color: white;
-        }
-        
-        .btn-danger:hover {
-            background: #c82333;
+            background: #45a049;
         }
         
         .btn-secondary {
-            background: #6c757d;
+            background: #757575;
             color: white;
         }
         
         .btn-secondary:hover {
-            background: #5a6268;
+            background: #616161;
         }
         
-        .progress-bar {
-            background: #e9ecef;
-            border-radius: 4px;
-            overflow: hidden;
-            height: 8px;
-            margin-bottom: 20px;
+        .btn-danger {
+            background: #f44336;
+            color: white;
         }
         
-        .progress-fill {
-            background: linear-gradient(90deg, #28a745, #20c997);
-            height: 100%;
-            transition: width 0.3s ease;
-            width: 0%;
-        }
-        
-        .samples-container {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            overflow: hidden;
+        .btn-danger:hover {
+            background: #da190b;
         }
         
         .sample-item {
-            border-bottom: 1px solid #eee;
-            padding: 25px;
-            transition: background-color 0.2s;
-        }
-        
-        .sample-item:last-child {
-            border-bottom: none;
-        }
-        
-        .sample-item:hover {
-            background-color: #f8f9fa;
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: all 0.3s;
         }
         
         .sample-item.approved {
-            border-left: 4px solid #28a745;
-            background-color: #f8fff9;
+            border-color: #4caf50;
+            background: #f1f8e9;
         }
         
         .sample-item.rejected {
-            border-left: 4px solid #dc3545;
-            background-color: #fff5f5;
+            border-color: #f44336;
+            background: #ffebee;
         }
         
         .sample-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         
         .sample-id {
-            background: #667eea;
-            color: white;
-            padding: 4px 8px;
-            border-radius: 4px;
             font-weight: bold;
-            font-size: 0.9em;
+            color: #666;
         }
         
         .method-tag {
             background: #e3f2fd;
             color: #1976d2;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.8em;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
         }
         
-        .sentences-comparison {
+        .sentence-comparison {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
         }
         
         .sentence-box {
-            border: 1px solid #dee2e6;
-            border-radius: 6px;
-            overflow: hidden;
-        }
-        
-        .sentence-header {
-            background: #f8f9fa;
-            padding: 10px 15px;
-            font-weight: bold;
-            font-size: 0.9em;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: #495057;
-        }
-        
-        .sentence-content {
             padding: 15px;
+            background: #f5f5f5;
+            border-radius: 6px;
         }
         
-        .sentence-text {
-            font-size: 1.1em;
-            margin-bottom: 15px;
-            line-height: 1.5;
-        }
-        
-        .intent-info {
-            margin-bottom: 10px;
+        .sentence-box h4 {
+            margin: 0 0 10px 0;
             color: #666;
+            font-size: 14px;
+        }
+        
+        .sentence {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+        
+        .intent {
+            background: #e3f2fd;
+            padding: 4px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 8px;
         }
         
         .entities {
             display: flex;
+            gap: 8px;
             flex-wrap: wrap;
-            gap: 5px;
         }
         
         .entity-tag {
-            background: #6f42c1;
-            color: white;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-size: 0.75em;
+            background: #fff3e0;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
         }
         
-        .review-section {
-            border-top: 1px solid #dee2e6;
-            padding-top: 20px;
-            display: grid;
-            grid-template-columns: auto auto 1fr auto;
-            gap: 20px;
-            align-items: center;
+        .evaluation-section {
+            background: #fafafa;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 15px;
         }
         
         .score-group {
             display: flex;
             align-items: center;
-            gap: 10px;
+            margin-bottom: 10px;
         }
         
         .score-label {
-            font-weight: 500;
-            color: #555;
-            min-width: 70px;
+            width: 100px;
+            font-weight: bold;
+            color: #666;
         }
         
         .score-buttons {
             display: flex;
-            gap: 3px;
+            gap: 5px;
         }
         
         .score-btn {
-            width: 30px;
-            height: 30px;
-            border: 1px solid #ddd;
+            width: 40px;
+            height: 40px;
+            border: 2px solid #ddd;
             background: white;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 0.9em;
-            font-weight: 500;
             transition: all 0.2s;
         }
         
         .score-btn:hover {
-            background: #f0f0f0;
+            border-color: #2196f3;
+            background: #e3f2fd;
         }
         
         .score-btn.active {
-            background: #667eea;
+            background: #2196f3;
             color: white;
-            border-color: #667eea;
+            border-color: #2196f3;
         }
         
         .comments-input {
-            padding: 8px 12px;
+            width: 100%;
+            padding: 8px;
             border: 1px solid #ddd;
             border-radius: 4px;
+            margin: 10px 0;
             resize: vertical;
-            font-family: inherit;
-            min-height: 40px;
+            min-height: 60px;
         }
         
         .action-buttons {
             display: flex;
             gap: 10px;
+            margin-top: 15px;
         }
         
         .empty-state {
@@ -343,69 +297,107 @@
             color: #666;
         }
         
-        .empty-state h3 {
-            margin-bottom: 10px;
-            color: #333;
-        }
-        
         .file-drop-zone {
-            border: 2px dashed #ccc;
+            border: 2px dashed #ddd;
             border-radius: 8px;
             padding: 40px;
-            text-align: center;
-            margin: 20px 0;
-            transition: border-color 0.3s;
+            margin: 20px auto;
+            max-width: 500px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .file-drop-zone:hover {
+            border-color: #2196f3;
+            background: #f5f5f5;
         }
         
         .file-drop-zone.dragover {
-            border-color: #667eea;
-            background-color: #f0f4ff;
+            border-color: #2196f3;
+            background: #e3f2fd;
         }
         
-        @media (max-width: 768px) {
-            .sentences-comparison {
-                grid-template-columns: 1fr;
-            }
-            
-            .review-section {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-            
-            .controls-row {
-                flex-direction: column;
-                align-items: stretch;
-            }
+        .manual-entry-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+        }
+        
+        .modal-content {
+            background: white;
+            margin: 50px auto;
+            padding: 30px;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 8px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .modal-close {
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .form-group textarea {
+            min-height: 80px;
+            resize: vertical;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>🇻🇳 Vietnamese SLU Augmentation Review</h1>
-            <p>Review and approve augmented samples for training</p>
-        </div>
+        <h1>🇻🇳 Vietnamese SLU Augmentation Review Dashboard</h1>
         
-        <div class="stats-panel">
+        <div class="stats-row">
             <div class="stat-card">
-                <span class="stat-number" id="totalSamples">0</span>
-                <div class="stat-label">Total Samples</div>
+                <h3>Total Samples</h3>
+                <div class="value" id="totalSamples">0</div>
             </div>
             <div class="stat-card">
-                <span class="stat-number" id="reviewedSamples">0</span>
-                <div class="stat-label">Reviewed</div>
+                <h3>Reviewed</h3>
+                <div class="value" id="reviewedSamples">0</div>
             </div>
             <div class="stat-card">
-                <span class="stat-number" id="approvedSamples">0</span>
-                <div class="stat-label">Approved</div>
+                <h3>Approved</h3>
+                <div class="value" id="approvedSamples">0</div>
             </div>
             <div class="stat-card">
-                <span class="stat-number" id="rejectedSamples">0</span>
-                <div class="stat-label">Rejected</div>
+                <h3>Rejected</h3>
+                <div class="value" id="rejectedSamples">0</div>
             </div>
             <div class="stat-card">
-                <span class="stat-number" id="approvalRate">0%</span>
-                <div class="stat-label">Approval Rate</div>
+                <h3>Approval Rate</h3>
+                <div class="value" id="approvalRate">0%</div>
             </div>
         </div>
         
@@ -448,6 +440,7 @@
             </div>
             
             <div class="controls-row">
+                <button class="btn btn-primary" id="addManualBtn">+ Add Manual Sample</button>
                 <button class="btn btn-success" id="autoApproveBtn">Auto-Approve High Quality</button>
                 <button class="btn btn-secondary" id="exportBtn">Export Results</button>
                 <button class="btn btn-primary" id="saveProgressBtn">Save Progress</button>
@@ -463,6 +456,59 @@
                     <p>📁 Drag & drop your CSV file here or click to browse</p>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Manual Entry Modal -->
+    <div id="manualEntryModal" class="manual-entry-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add Manual Sample</h2>
+                <span class="modal-close" id="modalClose">&times;</span>
+            </div>
+            <form id="manualEntryForm">
+                <div class="form-group">
+                    <label>Sample ID:</label>
+                    <input type="text" name="sampleId" required>
+                </div>
+                <div class="form-group">
+                    <label>Original Sentence:</label>
+                    <input type="text" name="originalSentence" required>
+                </div>
+                <div class="form-group">
+                    <label>Original Intent:</label>
+                    <input type="text" name="originalIntent" required>
+                </div>
+                <div class="form-group">
+                    <label>Original Entities (JSON format):</label>
+                    <textarea name="originalEntities" placeholder='[{"type": "device", "filler": "đèn"}]'></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Augmented Sentence:</label>
+                    <input type="text" name="augmentedSentence" required>
+                </div>
+                <div class="form-group">
+                    <label>Augmented Intent:</label>
+                    <input type="text" name="augmentedIntent" required>
+                </div>
+                <div class="form-group">
+                    <label>Augmented Entities (JSON format):</label>
+                    <textarea name="augmentedEntities" placeholder='[{"type": "device", "filler": "đèn"}]'></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Augmentation Method:</label>
+                    <select name="augmentationMethod" required>
+                        <option value="synonym_replacement">Synonym Replacement</option>
+                        <option value="politeness_addition">Politeness Addition</option>
+                        <option value="sentence_restructuring">Sentence Restructuring</option>
+                        <option value="time_variation">Time Variation</option>
+                        <option value="manual_entry">Manual Entry</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Add Sample</button>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -489,24 +535,26 @@
                 
                 // Drag and drop
                 const dropZone = document.getElementById('fileDropZone');
-                dropZone.addEventListener('click', () => {
-                    document.getElementById('csvFileInput').click();
-                });
-                
-                dropZone.addEventListener('dragover', (e) => {
-                    e.preventDefault();
-                    dropZone.classList.add('dragover');
-                });
-                
-                dropZone.addEventListener('dragleave', () => {
-                    dropZone.classList.remove('dragover');
-                });
-                
-                dropZone.addEventListener('drop', (e) => {
-                    e.preventDefault();
-                    dropZone.classList.remove('dragover');
-                    this.handleFileSelect(e.dataTransfer.files[0]);
-                });
+                if (dropZone) {
+                    dropZone.addEventListener('click', () => {
+                        document.getElementById('csvFileInput').click();
+                    });
+                    
+                    dropZone.addEventListener('dragover', (e) => {
+                        e.preventDefault();
+                        dropZone.classList.add('dragover');
+                    });
+                    
+                    dropZone.addEventListener('dragleave', () => {
+                        dropZone.classList.remove('dragover');
+                    });
+                    
+                    dropZone.addEventListener('drop', (e) => {
+                        e.preventDefault();
+                        dropZone.classList.remove('dragover');
+                        this.handleFileSelect(e.dataTransfer.files[0]);
+                    });
+                }
                 
                 // Filters
                 document.getElementById('methodFilter').addEventListener('change', (e) => {
@@ -535,6 +583,52 @@
                 
                 document.getElementById('saveProgressBtn').addEventListener('click', () => {
                     this.saveProgress();
+                });
+                
+                // Manual entry modal
+                document.getElementById('addManualBtn').addEventListener('click', () => {
+                    this.openManualEntryModal();
+                });
+                
+                document.getElementById('modalClose').addEventListener('click', () => {
+                    this.closeManualEntryModal();
+                });
+                
+                document.getElementById('manualEntryModal').addEventListener('click', (e) => {
+                    if (e.target.id === 'manualEntryModal') {
+                        this.closeManualEntryModal();
+                    }
+                });
+                
+                document.getElementById('manualEntryForm').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.addManualSample();
+                });
+                
+                // Use event delegation for dynamic elements
+                document.addEventListener('click', (e) => {
+                    // Score buttons
+                    if (e.target.classList.contains('score-btn')) {
+                        const sampleId = e.target.closest('.sample-item').dataset.sampleId;
+                        const scoreType = e.target.dataset.scoreType;
+                        const score = e.target.dataset.score;
+                        this.setScore(sampleId, scoreType, score);
+                    }
+                    
+                    // Action buttons
+                    if (e.target.dataset.action) {
+                        const sampleId = e.target.closest('.sample-item').dataset.sampleId;
+                        const action = e.target.dataset.action;
+                        this.setApproval(sampleId, action);
+                    }
+                });
+                
+                // Comments input
+                document.addEventListener('input', (e) => {
+                    if (e.target.classList.contains('comments-input')) {
+                        const sampleId = e.target.closest('.sample-item').dataset.sampleId;
+                        this.setComments(sampleId, e.target.value);
+                    }
                 });
             }
             
@@ -575,7 +669,6 @@
                 console.log(`Loaded ${this.samples.length} samples`);
                 this.applyFilters();
                 this.updateStats();
-                this.renderSamples();
             }
             
             parseCSVLine(line) {
@@ -650,9 +743,6 @@
                 }).join('');
                 
                 container.innerHTML = samplesHTML;
-                
-                // Add event listeners to new elements
-                this.attachSampleEventListeners();
             }
             
             createSampleHTML(sample) {
@@ -663,41 +753,38 @@
                 if (isApproved) statusClass = 'approved';
                 else if (isRejected) statusClass = 'rejected';
                 
-                const originalEntities = this.parseEntities(sample.Original_Entities);
-                const augmentedEntities = this.parseEntities(sample.Augmented_Entities);
-                
                 return `
                     <div class="sample-item ${statusClass}" data-sample-id="${sample.Sample_ID}">
                         <div class="sample-header">
-                            <div class="sample-id">Sample #${sample.Sample_ID}</div>
-                            <div class="method-tag">${sample.Augmentation_Method}</div>
+                            <span class="sample-id">Sample #${sample.Sample_ID}</span>
+                            <span class="method-tag">${sample.Augmentation_Method}</span>
                         </div>
                         
-                        <div class="sentences-comparison">
+                        <div class="sentence-comparison">
                             <div class="sentence-box">
-                                <div class="sentence-header">Original</div>
-                                <div class="sentence-content">
-                                    <div class="sentence-text">${sample.Original_Sentence}</div>
-                                    <div class="intent-info"><strong>Intent:</strong> ${sample.Original_Intent}</div>
-                                    <div class="entities">
-                                        ${originalEntities.map(e => `<span class="entity-tag">${e.type}: ${e.filler}</span>`).join('')}
-                                    </div>
+                                <h4>Original</h4>
+                                <div class="sentence">${sample.Original_Sentence}</div>
+                                <div class="intent">Intent: ${sample.Original_Intent}</div>
+                                <div class="entities">
+                                    ${this.parseEntities(sample.Original_Entities).map(e => 
+                                        `<span class="entity-tag">${e.type}: ${e.filler}</span>`
+                                    ).join('')}
                                 </div>
                             </div>
                             
                             <div class="sentence-box">
-                                <div class="sentence-header">Augmented</div>
-                                <div class="sentence-content">
-                                    <div class="sentence-text">${sample.Augmented_Sentence}</div>
-                                    <div class="intent-info"><strong>Intent:</strong> ${sample.Augmented_Intent}</div>
-                                    <div class="entities">
-                                        ${augmentedEntities.map(e => `<span class="entity-tag">${e.type}: ${e.filler}</span>`).join('')}
-                                    </div>
+                                <h4>Augmented</h4>
+                                <div class="sentence">${sample.Augmented_Sentence}</div>
+                                <div class="intent">Intent: ${sample.Augmented_Intent}</div>
+                                <div class="entities">
+                                    ${this.parseEntities(sample.Augmented_Entities).map(e => 
+                                        `<span class="entity-tag">${e.type}: ${e.filler}</span>`
+                                    ).join('')}
                                 </div>
                             </div>
                         </div>
                         
-                        <div class="review-section">
+                        <div class="evaluation-section">
                             <div class="score-group">
                                 <div class="score-label">Quality:</div>
                                 <div class="score-buttons">
@@ -742,37 +829,6 @@
                 }
             }
             
-            attachSampleEventListeners() {
-                // Score buttons
-                document.querySelectorAll('.score-btn').forEach(btn => {
-                    btn.addEventListener('click', (e) => {
-                        const sampleId = e.target.closest('.sample-item').dataset.sampleId;
-                        const scoreType = e.target.dataset.scoreType;
-                        const score = e.target.dataset.score;
-                        
-                        this.setScore(sampleId, scoreType, score);
-                    });
-                });
-                
-                // Action buttons
-                document.querySelectorAll('[data-action]').forEach(btn => {
-                    btn.addEventListener('click', (e) => {
-                        const sampleId = e.target.closest('.sample-item').dataset.sampleId;
-                        const action = e.target.dataset.action;
-                        
-                        this.setApproval(sampleId, action);
-                    });
-                });
-                
-                // Comments
-                document.querySelectorAll('.comments-input').forEach(textarea => {
-                    textarea.addEventListener('input', (e) => {
-                        const sampleId = e.target.closest('.sample-item').dataset.sampleId;
-                        this.setComments(sampleId, e.target.value);
-                    });
-                });
-            }
-            
             setScore(sampleId, scoreType, score) {
                 const sample = this.samples.find(s => s.Sample_ID == sampleId);
                 if (!sample) return;
@@ -785,7 +841,7 @@
                 
                 // Update UI
                 const sampleElement = document.querySelector(`[data-sample-id="${sampleId}"]`);
-                const scoreButtons = sampleElement.querySelectorAll(`[data-score-type="${scoreType}"] .score-btn`);
+                const scoreButtons = sampleElement.querySelectorAll(`[data-score-type="${scoreType}"]`);
                 scoreButtons.forEach(btn => {
                     btn.classList.toggle('active', btn.dataset.score == score);
                 });
@@ -855,13 +911,18 @@
                     return;
                 }
                 
+                // Export as CSV
                 const headers = Object.keys(this.samples[0]);
                 const csvContent = [
                     headers.join(','),
                     ...this.samples.map(sample => 
                         headers.map(header => {
                             const value = sample[header] || '';
-                            return value.includes(',') ? `"${value.replace(/"/g, '""')}"` : value;
+                            // Escape quotes and wrap in quotes if contains comma
+                            const escapedValue = String(value).replace(/"/g, '""');
+                            return value.includes(',') || value.includes('"') || value.includes('\n') 
+                                ? `"${escapedValue}"` 
+                                : escapedValue;
                         }).join(',')
                     )
                 ].join('\n');
@@ -871,7 +932,21 @@
                 const url = URL.createObjectURL(blob);
                 link.setAttribute('href', url);
                 link.setAttribute('download', `reviewed_samples_${new Date().toISOString().split('T')[0]}.csv`);
+                document.body.appendChild(link);
                 link.click();
+                document.body.removeChild(link);
+                
+                // Also export as JSON
+                const jsonBlob = new Blob([JSON.stringify(this.samples, null, 2)], { type: 'application/json;charset=utf-8;' });
+                const jsonLink = document.createElement('a');
+                const jsonUrl = URL.createObjectURL(jsonBlob);
+                jsonLink.setAttribute('href', jsonUrl);
+                jsonLink.setAttribute('download', `reviewed_samples_${new Date().toISOString().split('T')[0]}.json`);
+                document.body.appendChild(jsonLink);
+                jsonLink.click();
+                document.body.removeChild(jsonLink);
+                
+                alert('Exported both CSV and JSON files successfully!');
             }
             
             saveProgress() {
@@ -889,10 +964,73 @@
                     }
                 }, 30000); // Auto-save every 30 seconds
             }
+            
+            openManualEntryModal() {
+                document.getElementById('manualEntryModal').style.display = 'block';
+                // Generate next sample ID
+                const maxId = Math.max(...this.samples.map(s => parseInt(s.Sample_ID) || 0), 0);
+                document.querySelector('[name="sampleId"]').value = `MANUAL_${maxId + 1}`;
+            }
+            
+            closeManualEntryModal() {
+                document.getElementById('manualEntryModal').style.display = 'none';
+                document.getElementById('manualEntryForm').reset();
+            }
+            
+            addManualSample() {
+                const form = document.getElementById('manualEntryForm');
+                const formData = new FormData(form);
+                
+                // Validate entities JSON
+                try {
+                    if (formData.get('originalEntities')) {
+                        JSON.parse(formData.get('originalEntities'));
+                    }
+                    if (formData.get('augmentedEntities')) {
+                        JSON.parse(formData.get('augmentedEntities'));
+                    }
+                } catch (e) {
+                    alert('Invalid JSON format for entities. Please check your input.');
+                    return;
+                }
+                
+                const newSample = {
+                    Sample_ID: formData.get('sampleId'),
+                    Original_Sentence: formData.get('originalSentence'),
+                    Original_Intent: formData.get('originalIntent'),
+                    Original_Entities: formData.get('originalEntities') || '[]',
+                    Augmented_Sentence: formData.get('augmentedSentence'),
+                    Augmented_Intent: formData.get('augmentedIntent'),
+                    Augmented_Entities: formData.get('augmentedEntities') || '[]',
+                    Augmentation_Method: formData.get('augmentationMethod'),
+                    Quality_Score_1_5: '',
+                    Naturalness_Score_1_5: '',
+                    Comments: '',
+                    Approved_Yes_No: ''
+                };
+                
+                this.samples.push(newSample);
+                this.applyFilters();
+                this.updateStats();
+                this.closeManualEntryModal();
+                
+                alert('Manual sample added successfully!');
+            }
         }
         
         // Initialize the reviewer
         const reviewer = new AugmentationReviewer();
+        
+        // Load saved progress if available
+        const savedProgress = localStorage.getItem('augmentation_review_progress');
+        if (savedProgress) {
+            const loadSaved = confirm('Found saved progress. Would you like to load it?');
+            if (loadSaved) {
+                reviewer.samples = JSON.parse(savedProgress);
+                reviewer.applyFilters();
+                reviewer.updateStats();
+            }
+        }
     </script>
 </body>
 </html>

@@ -1,0 +1,1938 @@
+{
+  "dataset_analysis": {
+    "total_samples": 17321,
+    "intent_distribution": {
+      "kiểm tra tình trạng thiết bị": 1384,
+      "bật thiết bị": 1401,
+      "mở thiết bị": 1445,
+      "đóng thiết bị": 1386,
+      "giảm độ sáng của thiết bị": 1127,
+      "tăng mức độ của thiết bị": 276,
+      "tắt thiết bị": 1444,
+      "tăng độ sáng của thiết bị": 1015,
+      "tăng nhiệt độ của thiết bị": 133,
+      "giảm mức độ của thiết bị": 251,
+      "giảm âm lượng của thiết bị": 62,
+      "giảm nhiệt độ của thiết bị": 85,
+      "tăng âm lượng của thiết bị": 59,
+      "hủy hoạt cảnh": 234,
+      "kích hoạt cảnh": 315,
+      "bật nhạc": 640,
+      "đặt đồ ăn": 587,
+      "đặt lịch": 459,
+      "đặt vé": 531,
+      "gọi taxi": 581,
+      "gợi ý địa điểm": 456,
+      "gợi ý phim": 676,
+      "hỏi thông tin": 301,
+      "tra cứu thời tiết": 560,
+      "tra công thức nấu ăn": 642,
+      "tra cứu đường đi": 434,
+      "tra cứu lịch": 411,
+      "xóa lịch": 426
+    },
+    "entity_distribution": {
+      "device": 9058,
+      "living_space": 3206,
+      "time at": 1049,
+      "duration": 611,
+      "target number": 1406,
+      "changing value": 442,
+      "scene": 548,
+      "continuous_duration": 326,
+      "century": 116,
+      "trend": 128,
+      "song_gerne": 163,
+      "time_at": 994,
+      "delay_duration": 1158,
+      "singer": 194,
+      "song": 157,
+      "dish_name": 334,
+      "condition": 284,
+      "number_of_serving": 135,
+      "occasion": 493,
+      "location": 546,
+      "meal": 319,
+      "timeat": 82,
+      "remind_duration": 67,
+      "event": 543,
+      "event_time_at": 420,
+      "repeat": 71,
+      "participants": 163,
+      "tôi và participants": 1,
+      "payment_method": 51,
+      "departure_time_at": 97,
+      "departure_location": 122,
+      "arrival_location": 142,
+      "transport_type": 341,
+      "number_of_passengers": 269,
+      "type": 115,
+      "brand": 193,
+      "pickup_location": 134,
+      "classes": 144,
+      "dropoff_location": 167,
+      "area": 153,
+      "activity": 207,
+      "distance": 247,
+      "actor": 165,
+      "rating": 176,
+      "movie_duration": 153,
+      "language": 168,
+      "genre": 240,
+      "keyword": 216,
+      "keyword_time_at": 175,
+      "cooking_time": 105,
+      "ingredient": 122,
+      "method": 133,
+      "number_of_servings": 106,
+      "travel_duration": 82,
+      "destination": 234,
+      "weather_descriptor": 234,
+      "weather_duration": 132,
+      "weather_time_at": 165
+    },
+    "rare_intents": [
+      "giảm âm lượng của thiết bị",
+      "giảm nhiệt độ của thiết bị",
+      "tăng âm lượng của thiết bị"
+    ],
+    "rare_entities": [
+      "tôi và participants"
+    ],
+    "unique_intents": 28,
+    "unique_entities": 58,
+    "augmentation_targets": {
+      "intent_targets": 3,
+      "entity_targets": 1
+    }
+  },
+  "generation_statistics": {
+    "processed_samples": 17321,
+    "total_generated": 362,
+    "total_failed": 259,
+    "success_rate": 0.5829307568438004,
+    "method_breakdown": {
+      "synonym_replacement": 179,
+      "politeness_addition": 158,
+      "sentence_restructuring": 25
+    },
+    "quality_issue_count": 259,
+    "timestamp": "2025-07-12T01:09:33.961348"
+  },
+  "quality_issues": [
+    {
+      "original_sentence": "tiếng ti vi to quá, giảm đi ",
+      "augmented_sentence": "tiếng ti vi to quá, giảm đi ",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.906438"
+    },
+    {
+      "original_sentence": "tiếng ti vi to quá, giảm đi ",
+      "augmented_sentence": "tiếng ti vi to quá, giảm đi ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.907438"
+    },
+    {
+      "original_sentence": "giảm cho anh cái radio mau lên",
+      "augmented_sentence": "giảm cho anh cái radio mau lên",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.907438"
+    },
+    {
+      "original_sentence": "giảm cho anh cái radio mau lên",
+      "augmented_sentence": "giảm cho anh cái radio mau lên",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.907438"
+    },
+    {
+      "original_sentence": "trời nóng quá giảm nhiệt độ của cái máy lạnh xuống nhớ",
+      "augmented_sentence": "trời nóng quá giảm nhiệt độ của cái máy lạnh xuống nhớ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.907438"
+    },
+    {
+      "original_sentence": "tiếng to quá giảm cho mình cái radio xuống",
+      "augmented_sentence": "tiếng to quá giảm cho mình cái radio xuống",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.907438"
+    },
+    {
+      "original_sentence": "em gì ơi tăng giúp anh cái máy nghe nhạc lên với",
+      "augmented_sentence": "em gì ơi tăng giúp anh cái máy nghe nhạc lên với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.907438"
+    },
+    {
+      "original_sentence": "bạn ơi giảm giúp mình bóng sưởi về 76%",
+      "augmented_sentence": "bạn ơi giảm giúp mình bóng sưởi về 76%",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.907438"
+    },
+    {
+      "original_sentence": "bạn ơi giảm giúp mình bóng sưởi về 76%",
+      "augmented_sentence": "bạn ơi giảm giúp mình bóng sưởi về 76%",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.907438"
+    },
+    {
+      "original_sentence": "âm lượng to quá hãy giảm cái radio lại đi",
+      "augmented_sentence": "âm lượng to quá hãy giảm cái radio lại đi",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.907438"
+    },
+    {
+      "original_sentence": "tăng giúp mình cái ti vi trong 23 tiếng 56 phút nhá",
+      "augmented_sentence": "trong 23, tăng giúp mình cái ti vi ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.907438"
+    },
+    {
+      "original_sentence": "giảm máy lạnh em ơi",
+      "augmented_sentence": "giảm máy lạnh em ơi",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "ồn quá giảm cho anh cái radio xuống với",
+      "augmented_sentence": "ồn quá giảm cho anh cái radio xuống với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "em ơi, giảm cho anh cái máy lạnh với",
+      "augmented_sentence": "em ơi, giảm cho anh cái máy lạnh với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "em ơi tăng radio lên 38% giúp chị",
+      "augmented_sentence": "em ơi tăng radio lên 38% giúp chị",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "em ơi tăng radio lên 38% giúp chị",
+      "augmented_sentence": "em ơi tăng radio lên 38% giúp chị",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "bạn ơi, hãy giảm radio cho mình radio xuống còn 65% nha",
+      "augmented_sentence": "bạn ơi, hãy giảm radio cho mình radio xuống còn 65% nha",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "bạn ơi lạnh quá giảm giúp mình máy lạnh xuống nhé",
+      "augmented_sentence": "bạn ơi lạnh quá giảm giúp mình máy lạnh xuống nhé",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "tăng radio thêm 31% lúc 11 giờ 27 phút cho mình",
+      "augmented_sentence": "lúc 11, tăng radio thêm 31% ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "ồn quá, bạn giảm cái radio xuống 1 chút giúp mình với",
+      "augmented_sentence": "ồn quá, bạn giảm cái radio xuống 1 chút giúp mình với",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "ồn quá, bạn giảm cái radio xuống 1 chút giúp mình với",
+      "augmented_sentence": "ồn quá, bạn giảm cái radio xuống 1 chút giúp mình với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "em yêu ơi giảm giúp anh cái máy lạnh",
+      "augmented_sentence": "em yêu ơi giảm giúp anh cái máy lạnh",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "em yêu ơi giảm giúp anh cái máy lạnh",
+      "augmented_sentence": "em yêu ơi giảm giúp anh cái máy lạnh",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "tiếng radio ở phòng thay đồ số 2 bé quá bạn tăng lên cho mình đi",
+      "augmented_sentence": "tiếng radio ở phòng thay đồ số 2 bé quá bạn tăng lên cho mình đi",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "tiếng radio ở phòng thay đồ số 2 bé quá bạn tăng lên cho mình đi",
+      "augmented_sentence": "ở phòng, tiếng radio ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "em ơi giảm giúp anh cái bóng sưởi xuống 76% với",
+      "augmented_sentence": "em ơi giảm giúp anh cái bóng sưởi xuống 76% với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "em ơi giảm cho anh cái máy lạnh nhá",
+      "augmented_sentence": "em ơi giảm cho anh cái máy lạnh nhá",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "bạn ơi giảm cho radio xuống mức 65% nhé",
+      "augmented_sentence": "bạn ơi giảm cho radio xuống mức 65% nhé",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "em ơi lạnh quá giảm giúp anh cái máy lạnh xuống đi",
+      "augmented_sentence": "em ơi lạnh quá giảm giúp anh cái máy lạnh xuống đi",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "trợ lý ảo ơi giảm giúp mình cái máy lạnh xuống với",
+      "augmented_sentence": "trợ lý ảo ơi giảm giúp mình cái máy lạnh xuống với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "lạnh quá em ơi giảm giúp anh cái máy lạnh với",
+      "augmented_sentence": "lạnh quá em ơi giảm giúp anh cái máy lạnh với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "ông cháu ơi tăng radio giúp mình với",
+      "augmented_sentence": "ông cháu ơi tăng radio giúp mình với",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "ông cháu ơi tăng radio giúp mình với",
+      "augmented_sentence": "ông cháu ơi tăng radio giúp mình với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "tăng radio phòng thay đồ số 2 lên 38% đi",
+      "augmented_sentence": "tăng radio phòng thay đồ số 2 lên 38% đi",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "em ơi tăng cho anh cái radio ở phòng thay đồ số 2 lên 38% vào lúc 4 tiếng 44 phút nhá",
+      "augmented_sentence": "em ơi tăng lên cho anh cái radio ở phòng thay đồ số 2 lên 38% vào lúc 4 tiếng 44 phút nhá",
+      "method": "synonym_replacement",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "em ơi tăng cho anh cái radio ở phòng thay đồ số 2 lên 38% vào lúc 4 tiếng 44 phút nhá",
+      "augmented_sentence": "em ơi tăng cho anh cái radio ở phòng thay đồ số 2 lên 38% vào lúc 4 tiếng 44 phút nhá nha",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "giảm máy lạnh cho anh đi em ơi, anh nổi hết cả da gà rồi",
+      "augmented_sentence": "giảm máy lạnh cho anh đi em ơi, anh nổi hết cả da gà rồi",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "em ơi, giảm cho anh cái ti vi với",
+      "augmented_sentence": "em ơi, giảm cho anh cái ti vi với",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "em ơi, giảm cho anh cái ti vi với",
+      "augmented_sentence": "em ơi, giảm cho anh cái ti vi với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "em ơi, giảm cho anh cái máy lạnh được không",
+      "augmented_sentence": "em ơi, giảm cho anh cái máy lạnh được không",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "em ơi giảm ti vi xuống giúp chị với tiếng nó bị to quá",
+      "augmented_sentence": "em ơi giảm ti vi xuống giúp chị với tiếng nó bị to quá",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "tới giờ rồi giảm âm lượng ti vi xuống một chút nhé",
+      "augmented_sentence": "tới giờ rồi giảm âm lượng ti vi xuống một chút nhé",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "bạn ơi giảm giúp mình cái máy lạnh với lạnh quá",
+      "augmented_sentence": "bạn ơi giảm giúp mình cái máy lạnh với lạnh quá",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "bạn ơi giảm giúp mình cái máy lạnh với lạnh quá",
+      "augmented_sentence": "bạn ơi giảm giúp mình cái máy lạnh với lạnh quá",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "đến 11 giờ 27 phút thì tăng cho mình cái radio lên nhớ",
+      "augmented_sentence": "đến 11 giờ 27 phút thì tăng cho mình cái radio lên nhớ",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "đến 11 giờ 27 phút thì tăng cho mình cái radio lên nhớ",
+      "augmented_sentence": "đến 11 giờ 27 phút thì tăng cho mình cái radio lên nhớ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "giảm cho mình cái radio xuống còn 65% với, to quá",
+      "augmented_sentence": "giảm cho mình cái radio xuống còn 65% với, to quá",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "em ơi giảm cho anh cái ti vi với",
+      "augmented_sentence": "em ơi giảm cho anh cái ti vi với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "tiếng bé quá bạn hỗ trợ tăng cho mình cái radio với",
+      "augmented_sentence": "tiếng bé quá bạn hỗ trợ tăng cho mình cái radio với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "lạnh quá bạn giảm cho mình cái máy lạnh",
+      "augmented_sentence": "lạnh quá bạn giảm cho mình cái máy lạnh",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "bật to quá, giảm cho mình cái radio xuống 65% nhé",
+      "augmented_sentence": "bật to quá, giảm cho mình cái radio xuống 65% nhé",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "lúc 17 giờ 9 phút trời sẽ mát hơn, bạn giảm giúp mình cái máy lạnh lúc đó nhớ",
+      "augmented_sentence": "lúc 17 giờ 9 phút trời sẽ mát hơn, bạn giảm giúp mình cái máy lạnh lúc đó nhớ được chứ",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "lúc 17 giờ 9 phút trời sẽ mát hơn, bạn giảm giúp mình cái máy lạnh lúc đó nhớ",
+      "augmented_sentence": "lúc 17,  ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "tăng âm lượng radio ở trong phòng thay đồ số 2 nhé",
+      "augmented_sentence": "ở trong, tăng âm lượng radio ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "nhạc to quá em giảm cho anh cái radio xuống 65% nhé",
+      "augmented_sentence": "nhạc to quá em giảm cho anh cái radio xuống 65% nhé",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "bạn ơi tăng giúp tôi cái radio thêm 31% nhé",
+      "augmented_sentence": "bạn ơi tăng giúp tôi cái radio thêm 31% nhé",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "em ơi tăng giúp chị cái radio đến 31% đi",
+      "augmented_sentence": "em ơi tăng giúp chị cái radio đến 31% đi",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "tiếng radio hơi to, em giảm giúp anh xuống 65% với",
+      "augmented_sentence": "tiếng radio hơi to, em giảm giúp anh xuống 65% với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "cái âm lượng của radio to quá, hãy giảm cho tôi xuống 65% nhá",
+      "augmented_sentence": "cái âm lượng của radio to quá, hãy giảm cho tôi xuống 65% nhá",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "em ơi radio hơi to em giảm giúp anh với",
+      "augmented_sentence": "em ơi radio hơi to em giảm giúp anh với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "tăng cho chị cái radio trong phòng thay đồ số 2 lên khoảng 38%",
+      "augmented_sentence": "trong phòng, tăng cho chị cái radio ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "trời cũng đỡ lạnh rùi em ơi, giảm hộ anh cái bóng sưởi xuống 76% nhá",
+      "augmented_sentence": "trời cũng đỡ lạnh rùi em ơi, giảm hộ anh cái bóng sưởi xuống 76% nhá",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "trời cũng đỡ lạnh rùi em ơi, giảm hộ anh cái bóng sưởi xuống 76% nhá",
+      "augmented_sentence": "trời cũng đỡ lạnh rùi em ơi, giảm hộ anh cái bóng sưởi xuống 76% nhá",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "tăng cho mình cái radio ở phòng thay đồ số 2 với",
+      "augmented_sentence": "ở phòng, tăng cho mình cái radio ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "em giảm cho chị cái máy lạnh xuống đi không dùng nữa đâu",
+      "augmented_sentence": "em giảm cho chị cái máy lạnh xuống đi không dùng nữa đâu",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "bạn tăng cho tớ cái radio lên với",
+      "augmented_sentence": "bạn tăng cho tớ cái radio lên với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.908438"
+    },
+    {
+      "original_sentence": "lạnh quá, em giảm cho anh cái máy lạnh với",
+      "augmented_sentence": "lạnh quá, em giảm cho anh cái máy lạnh với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "em ơi giảm cho anh cái máy lạnh với",
+      "augmented_sentence": "em ơi giảm cho anh cái máy lạnh với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "em ơi giảm cho anh cái radio xuống 65% với",
+      "augmented_sentence": "em ơi giảm cho anh cái radio xuống 65% với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "bạn ơi hãy tăng ti vi lên",
+      "augmented_sentence": "bạn ơi hãy tăng ti vi lên",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "vẫn hơi nóng, giảm cho anh cái máy lạnh xuống em ơi",
+      "augmented_sentence": "vẫn hơi nóng, giảm cho anh cái máy lạnh xuống em ơi",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "em ơi tiếng to quá giảm cho anh cái ti vi đi",
+      "augmented_sentence": "em ơi tiếng to quá giảm cho anh cái ti vi đi",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "em ơi đang nóng quá, giảm ngay cái bóng sưởi đi, xuống 76% thôi nhá",
+      "augmented_sentence": "em ơi đang nóng quá, giảm ngay cái bóng sưởi đi, xuống 76% thôi nhá",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "em ơi đang nóng quá, giảm ngay cái bóng sưởi đi, xuống 76% thôi nhá",
+      "augmented_sentence": "em ơi đang nóng quá, giảm ngay cái bóng sưởi đi, xuống 76% thôi nhá",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "bạn ơi tăng giúp mình cái radio lên được không",
+      "augmented_sentence": "bạn ơi tăng giúp mình cái radio lên được không",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "trợ lý ơi giảm dùm cái ti vi",
+      "augmented_sentence": "trợ lý ơi giảm dùm cái ti vi",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "ồn quá giảm cái radio xuống 65% giùm mình với",
+      "augmented_sentence": "ồn quá giảm cái radio xuống 65% giùm mình với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "giảm hộ cái máy lạnh xuống với",
+      "augmented_sentence": "giảm hộ cái máy lạnh xuống với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "giảm giúp mình cái radio xuống 65% nhé",
+      "augmented_sentence": "giảm giúp mình cái radio xuống 65% nhé",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "giảm giúp mình cái radio xuống 65% nhé",
+      "augmented_sentence": "giảm giúp mình cái radio xuống 65% nhé",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "alo em ơi, giảm giúp anh cái radio với",
+      "augmented_sentence": "alo em ơi, giảm giúp anh cái radio với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "em ơi giảm hộ chị cái máy lạnh với",
+      "augmented_sentence": "em ơi giảm hộ chị cái máy lạnh với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "giúp cô giảm cái bóng sưởi đến 76% với",
+      "augmented_sentence": "giúp cô giảm cái bóng sưởi đến 76% với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "bạn ơi, mình buồn ngủ rồi, giảm giúp mình cái radio 65% nhá",
+      "augmented_sentence": "bạn ơi, mình buồn ngủ rồi, giảm giúp mình cái radio 65% nhá",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "bạn ơi, mình buồn ngủ rồi, giảm giúp mình cái radio 65% nhá",
+      "augmented_sentence": "bạn ơi, mình buồn ngủ rồi, giảm giúp mình cái radio 65% nhá",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "bạn gì ơi tăng giúp tôi cái ti vi ở kia lên 23 tiếng 56 phút nha",
+      "augmented_sentence": "ở kia, bạn gì ơi tăng giúp tôi cái ti vi ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "giảm hộ anh radio đi tầm ở mức 65% em nhá, như này thì hơi to",
+      "augmented_sentence": "ở mức, giảm hộ anh radio đi tầm ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "em ơi giảm cho anh cái radio đi 65% nhá",
+      "augmented_sentence": "em ơi giảm cho anh cái radio đi 65% nhá",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "trời giờ mát rồi đấy giảm máy lạnh xuống một chút nhé",
+      "augmented_sentence": "trời giờ mát rồi đấy giảm máy lạnh xuống một chút nhé",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "trời giờ mát rồi đấy giảm máy lạnh xuống một chút nhé",
+      "augmented_sentence": "trời giờ mát rồi đấy giảm máy lạnh xuống một chút nhé",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "em ơi tăng âm lượng cái radio lên 31% giúp chị với",
+      "augmented_sentence": "em ơi tăng âm lượng cái radio lên 31% giúp chị với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "em ơi tăng giúp chị cái radio lên 31% đi",
+      "augmented_sentence": "em ơi tăng giúp chị cái radio lên 31% đi",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "tầm 11 giờ 27 phút thì tăng cái radio lên 31% cho mình nhớ",
+      "augmented_sentence": "tầm 11 giờ 27 phút thì tăng cái radio lên 31% cho mình nhớ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "em ơi to quá giảm cho anh cái radio đi 65% nhé",
+      "augmented_sentence": "em ơi to quá giảm cho anh cái radio đi 65% nhé",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "em ơi to quá giảm cho anh cái radio đi 65% nhé",
+      "augmented_sentence": "em ơi to quá giảm cho anh cái radio đi 65% nhé",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "cậu ơi cậu, tăng hộ mình cái ti vi với, mình cần xem hoạt hình",
+      "augmented_sentence": "cậu ơi cậu, tăng hộ mình cái ti vi với, mình cần xem hoạt hình",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "em ơi giúp anh tăng cái ti vi lên với",
+      "augmented_sentence": "em ơi giúp anh tăng cái ti vi lên với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "ờm tăng âm thanh radio 31% giúp mình hộ cái",
+      "augmented_sentence": "ờm tăng âm thanh radio 31% giúp mình hộ cái",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "ờm tăng âm thanh radio 31% giúp mình hộ cái",
+      "augmented_sentence": "ờm tăng âm thanh radio 31% giúp mình hộ cái",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "giảm cho tôi cái máy nghe nhạc lúc 3 giờ 46 phút nhé",
+      "augmented_sentence": "lúc 3, giảm cho tôi cái máy nghe nhạc ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "lạnh quá giảm cái bóng sưởi đi 76% nhá",
+      "augmented_sentence": "lạnh quá giảm cái bóng sưởi đi 76% nhá",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "trợ lý ảo hãy tăng giúp tôi cái radio ở phòng thay đồ số 2 lên giúp tôi nhé",
+      "augmented_sentence": "trợ lý ảo hãy điều chỉnh lên giúp tôi cái radio ở phòng thay đồ số 2 lên giúp tôi nhé",
+      "method": "synonym_replacement",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "trợ lý ảo hãy tăng giúp tôi cái radio ở phòng thay đồ số 2 lên giúp tôi nhé",
+      "augmented_sentence": "Bạn ơi trợ lý ảo hãy tăng giúp tôi cái radio ở phòng thay đồ số 2 lên giúp tôi nhé",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "trợ lý ảo hãy tăng giúp tôi cái radio ở phòng thay đồ số 2 lên giúp tôi nhé",
+      "augmented_sentence": "ở phòng, trợ lý ảo hãy tăng giúp tôi cái radio ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "ti vi hơi sáng, giảm cho mình độ sáng xuống nhé",
+      "augmented_sentence": "ti vi hơi sáng, giảm cho mình độ sáng xuống nhé",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "ti vi hơi sáng, giảm cho mình độ sáng xuống nhé",
+      "augmented_sentence": "ti vi hơi sáng, giảm cho mình độ sáng xuống nhé",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "em ơi em tăng cái radio ở phòng thay đồ số 2 giúp chị với",
+      "augmented_sentence": "ở phòng, em ơi em tăng cái radio ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "tiếng máy nghe nhạc nhỏ quá, tăng lên giúp chị nhé",
+      "augmented_sentence": "tiếng máy nghe nhạc nhỏ quá, tăng lên giúp chị nhé",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "em ơi, giảm hộ anh cái máy nghe nhạc nhé",
+      "augmented_sentence": "em ơi, giảm hộ anh cái máy nghe nhạc nhé",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "giảm ti vi cho tôi",
+      "augmented_sentence": "giảm ti vi cho tôi",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "giảm radio xuống mức 65% cho anh, em nhé",
+      "augmented_sentence": "giảm radio xuống mức 65% cho anh, em nhé",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "cái máy nghe nhạc bé quá em tăng âm lượng lên cho anh với",
+      "augmented_sentence": "cái máy nghe nhạc bé quá em tăng âm lượng lên cho anh với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "em ơi giảm anh cái ti vi",
+      "augmented_sentence": "em ơi giảm anh cái ti vi",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "giảm hộ anh cái bóng sưởi chút nhé ",
+      "augmented_sentence": "giảm hộ anh cái bóng sưởi chút nhé ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "đau đầu quá, giảm cái máy nghe nhạc đi hộ tôi với",
+      "augmented_sentence": "đau đầu quá, giảm cái máy nghe nhạc đi hộ tôi với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "giảm đèn sưởi hộ mình nóng quá",
+      "augmented_sentence": "giảm đèn sưởi hộ mình nóng quá",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "ồn quá em ơi giảm cho anh cái máy nghe nhạc với",
+      "augmented_sentence": "ồn quá em ơi giảm cho anh cái máy nghe nhạc với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "em ơi tăng âm lượng ti vi lên cho anh đi",
+      "augmented_sentence": "em ơi tăng âm lượng ti vi lên cho anh đi",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "em ơi giảm cho anh cái ti vi với",
+      "augmented_sentence": "em ơi giảm cho anh cái ti vi với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "giảm cái bóng sưởi xuống 76% giúp anh với nha",
+      "augmented_sentence": "giảm cái bóng sưởi xuống 76% giúp anh với nha",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "bé quá tăng giúp mình cái máy nghe nhạc với",
+      "augmented_sentence": "bé quá tăng giúp mình cái máy nghe nhạc với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "bạn có thể giảm giúp mình cái máy nghe nhạc vào lúc 3 giờ 46 phút được không",
+      "augmented_sentence": "vào lúc, bạn có thể giảm giúp mình cái máy nghe nhạc ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "giảm âm lượng của ti vi",
+      "augmented_sentence": "giảm âm lượng của ti vi",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "giảm âm lượng của ti vi",
+      "augmented_sentence": "giảm âm lượng của ti vi",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "trời ấm rồi, giảm cho mình cái đèn sưởi xuống đi",
+      "augmented_sentence": "trời ấm rồi, giảm cho mình cái đèn sưởi xuống đi",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "bạn ơi giảm cho mình cái đèn sưởi đi 84% nhá",
+      "augmented_sentence": "bạn ơi giảm cho mình cái đèn sưởi đi 84% nhá",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "bạn ơi giảm cho mình cái đèn sưởi đi 84% nhá",
+      "augmented_sentence": "bạn ơi giảm cho mình cái đèn sưởi đi 84% nhá",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "giảm cái bóng sưởi xuống 76% cho tôi với, nóng quá",
+      "augmented_sentence": "giảm cái bóng sưởi xuống 76% cho tôi với, nóng quá",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "em ơi trời nóng quá giảm ngay cái bóng sưởi xuống 76% cho anh",
+      "augmented_sentence": "em ơi trời nóng quá giảm ngay cái bóng sưởi xuống 76% cho anh",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "em ơi giảm giúp anh cái ti vi với",
+      "augmented_sentence": "em ơi giảm giúp anh cái ti vi với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "hình như hơi nóng ấy nhỉ, trợ lý ơi giảm giúp chị cái đèn sưởi với",
+      "augmented_sentence": "hình như hơi nóng ấy nhỉ, trợ lý ơi giảm giúp chị cái đèn sưởi với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "giảm bóng sưởi còn 76% cho mình",
+      "augmented_sentence": "giảm bóng sưởi còn 76% cho mình",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "tăng ti vi lên trong 23 tiếng 56 phút cho tôi nhé",
+      "augmented_sentence": "tăng ti vi lên trong 23 tiếng 56 phút cho tôi nhé",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "tăng ti vi lên trong 23 tiếng 56 phút cho tôi nhé",
+      "augmented_sentence": "trong 23, tăng ti vi lên ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "tăng hộ tôi cái ti vi trong vòng 23 tiếng 56 phút",
+      "augmented_sentence": "trong vòng, tăng hộ tôi cái ti vi ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "em ơi, giảm hộ anh cái máy lạnh trong phòng giặt",
+      "augmented_sentence": "em ơi, giảm hộ anh cái máy lạnh trong phòng giặt",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "âm lượng bé quá tăng giúp tôi cái máy nghe nhạc với",
+      "augmented_sentence": "âm lượng bé quá tăng giúp tôi cái máy nghe nhạc với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "giảm âm lượng cái ti vi bé lại nhanh",
+      "augmented_sentence": "giảm âm lượng cái ti vi bé lại nhanh",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "giảm âm lượng cái ti vi bé lại nhanh",
+      "augmented_sentence": "giảm âm lượng cái ti vi bé lại nhanh",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "vào lúc 3 giờ 46 phút, giảm giúp anh cái máy nghe nhạc",
+      "augmented_sentence": "vào lúc,  ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "ồn quá em ơi giảm hộ chị cái ti vi với",
+      "augmented_sentence": "ồn quá em ơi giảm hộ chị cái ti vi với",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "ồn quá em ơi giảm hộ chị cái ti vi với",
+      "augmented_sentence": "ồn quá em ơi giảm hộ chị cái ti vi với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "giảm cái ti vi nhá",
+      "augmented_sentence": "giảm cái ti vi nhá",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "giảm cái ti vi nhá",
+      "augmented_sentence": "giảm cái ti vi nhá",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "giảm máy nghe nhạc lúc 3 giờ 46 phút nhé",
+      "augmented_sentence": "lúc 3, giảm máy nghe nhạc ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "trong phòng ồn quá, giảm giúp anh cái ti vi nhé",
+      "augmented_sentence": "trong phòng ồn quá, giảm giúp anh cái ti vi nhé",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "trong phòng ồn quá, giảm giúp anh cái ti vi nhé",
+      "augmented_sentence": "trong phòng,  ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "bạn ơi giảm cho mình cái ti vi với",
+      "augmented_sentence": "bạn ơi giảm cho mình cái ti vi với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "lúc 3 giờ 46 phút, giảm máy nghe nhạc đi giúp mình nhá",
+      "augmented_sentence": "lúc 3,  ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "giảm giúp tôi cái radio",
+      "augmented_sentence": "giảm giúp tôi cái radio",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "bạn giảm máy nghe nhạc lúc 3 giờ 46 phút cho mình nhé",
+      "augmented_sentence": "lúc 3, bạn giảm máy nghe nhạc ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "làm ơn hãy để ý, vào lúc 3 giờ 46 phút hãy giảm máy nghe nhạc xuống nhé",
+      "augmented_sentence": "vào lúc, làm ơn hãy để ý, ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "em ơi giảm tiếng cái ti vi xuống cho anh đi",
+      "augmented_sentence": "em ơi giảm tiếng cái ti vi xuống cho anh đi",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "em ơi giảm tiếng cái ti vi xuống cho anh đi",
+      "augmented_sentence": "em ơi giảm tiếng cái ti vi xuống cho anh đi",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "cái ti vi hơi sáng, giảm giúp anh với",
+      "augmented_sentence": "cái ti vi hơi sáng, giảm giúp anh với",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "cái ti vi hơi sáng, giảm giúp anh với",
+      "augmented_sentence": "cái ti vi hơi sáng, giảm giúp anh với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "bạn ơi giảm giúp mình cái máy nghe nhạc đi ồn quá",
+      "augmented_sentence": "bạn ơi giảm giúp mình cái máy nghe nhạc đi ồn quá",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "em ơi giảm giúp anh cái ti vi với",
+      "augmented_sentence": "em ơi giảm giúp anh cái ti vi với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "này trợ lý, tăng cho anh cái radio với",
+      "augmented_sentence": "này trợ lý, tăng cho anh cái radio với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "chị cần xem camera, em tăng cái volume ti vi lên hộ chị với",
+      "augmented_sentence": "chị cần xem camera, em tăng cái volume ti vi lên hộ chị với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "em ơi, tiếng máy nghe nhạc hơi bé, em tăng lên giúp anh với",
+      "augmented_sentence": "em ơi, tiếng máy nghe nhạc hơi bé, em tăng lên giúp anh với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "tăng cái ti vi lên cho anh được không",
+      "augmented_sentence": "tăng cái ti vi lên cho anh được không",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "hãy tăng máy nghe nhạc",
+      "augmented_sentence": "hãy tăng máy nghe nhạc",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "em ơi tăng cho anh cái ti vi với",
+      "augmented_sentence": "em ơi tăng cho anh cái ti vi với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "em ơi tăng máy nghe nhạc",
+      "augmented_sentence": "em ơi tăng máy nghe nhạc",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "em ơi tăng máy nghe nhạc",
+      "augmented_sentence": "em ơi tăng máy nghe nhạc",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.924236"
+    },
+    {
+      "original_sentence": "em ơi anh chả nghe thấy gì cả tăng cho anh cái radio lên đi",
+      "augmented_sentence": "em ơi anh chả nghe thấy gì cả tăng cho anh cái radio lên đi",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.933107"
+    },
+    {
+      "original_sentence": "bạn tăng giúp mình cái radio vào lúc 11 giờ 27 phút nhé",
+      "augmented_sentence": "vào lúc, bạn tăng giúp mình cái radio ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.933107"
+    },
+    {
+      "original_sentence": "bạn ơi, tiếng nhỏ quá, tăng cho mình cái máy nghe nhạc với",
+      "augmented_sentence": "bạn ơi, tiếng nhỏ quá, tăng cho mình cái máy nghe nhạc với",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.933107"
+    },
+    {
+      "original_sentence": "bạn ơi, tiếng nhỏ quá, tăng cho mình cái máy nghe nhạc với",
+      "augmented_sentence": "bạn ơi, tiếng nhỏ quá, tăng cho mình cái máy nghe nhạc với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.933107"
+    },
+    {
+      "original_sentence": "em ơi tiếng hơi bé tăng ti vi lên cho anh",
+      "augmented_sentence": "em ơi tiếng hơi bé tăng ti vi lên cho anh",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.933107"
+    },
+    {
+      "original_sentence": "tăng ti vi lên trong 23 tiếng 56 phút",
+      "augmented_sentence": "trong 23, tăng ti vi lên ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.933107"
+    },
+    {
+      "original_sentence": "giảm cho anh cái bóng sưởi xuống 76% nhé trời bớt lạnh rồi",
+      "augmented_sentence": "giảm cho anh cái bóng sưởi xuống 76% nhé trời bớt lạnh rồi",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.933107"
+    },
+    {
+      "original_sentence": "giúp tôi giảm bóng sưởi xuống còn 76%",
+      "augmented_sentence": "giúp tôi giảm bóng sưởi xuống còn 76%",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.933107"
+    },
+    {
+      "original_sentence": "giảm giúp mình cái máy lạnh cái",
+      "augmented_sentence": "giảm giúp mình cái máy lạnh cái",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.933515"
+    },
+    {
+      "original_sentence": "giảm giúp anh cái máy lạnh ở trong phòng giặt với nhé",
+      "augmented_sentence": "ở trong, giảm giúp anh cái máy lạnh ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.933515"
+    },
+    {
+      "original_sentence": "giảm cho mình cái máy lạnh xuống",
+      "augmented_sentence": "giảm cho mình cái máy lạnh xuống",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.933515"
+    },
+    {
+      "original_sentence": "bạn ơi giảm hộ mình cái bóng sưởi xuống 76% nhé",
+      "augmented_sentence": "bạn ơi giảm hộ mình cái bóng sưởi xuống 76% nhé",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.933515"
+    },
+    {
+      "original_sentence": "bạn ơi giảm giúp tôi cái bóng sưởi với",
+      "augmented_sentence": "bạn ơi giảm giúp tôi cái bóng sưởi với",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.933515"
+    },
+    {
+      "original_sentence": "bạn ơi giảm giúp tôi cái bóng sưởi với",
+      "augmented_sentence": "bạn ơi giảm giúp tôi cái bóng sưởi với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.933515"
+    },
+    {
+      "original_sentence": "em ơi giảm anh cái bóng sưởi xuống 76% với nóng quá",
+      "augmented_sentence": "em ơi giảm anh cái bóng sưởi xuống 76% với nóng quá",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.933515"
+    },
+    {
+      "original_sentence": "nóng quá. giảm đèn sưởi cho anh cái",
+      "augmented_sentence": "nóng quá. giảm đèn sưởi cho anh cái",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.933515"
+    },
+    {
+      "original_sentence": "phòng ấm lên rồi, giảm đèn sưởi xuống 1 chút cho anh",
+      "augmented_sentence": "phòng ấm lên rồi, giảm đèn sưởi xuống 1 chút cho anh",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.933515"
+    },
+    {
+      "original_sentence": "giảm cho chị cái máy lạnh cái",
+      "augmented_sentence": "giảm cho chị cái máy lạnh cái",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.933515"
+    },
+    {
+      "original_sentence": "nóng quá giảm cho anh cái đèn sưởi với em ơi",
+      "augmented_sentence": "nóng quá giảm cho anh cái đèn sưởi với em ơi",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.933515"
+    },
+    {
+      "original_sentence": "phòng giặt lạnh quá giảm hộ cái máy lạnh với em ơi",
+      "augmented_sentence": "phòng giặt lạnh quá giảm hộ cái máy lạnh với em ơi",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.933515"
+    },
+    {
+      "original_sentence": "làm ơn hãy giảm bóng sưởi xuống 76% giúp tôi",
+      "augmented_sentence": "làm ơn hãy giảm bóng sưởi xuống 76% giúp tôi",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.933515"
+    },
+    {
+      "original_sentence": "làm ơn hãy giảm bóng sưởi xuống 76% giúp tôi",
+      "augmented_sentence": "làm ơn hãy giảm bóng sưởi xuống 76% giúp tôi",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.933515"
+    },
+    {
+      "original_sentence": "em ơi giảm giúp anh cái bóng sưởi với",
+      "augmented_sentence": "em ơi giảm giúp anh cái bóng sưởi với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.933515"
+    },
+    {
+      "original_sentence": "lạnh quá, giảm hộ chị cái bóng sưởi",
+      "augmented_sentence": "lạnh quá, giảm hộ chị cái bóng sưởi",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.933515"
+    },
+    {
+      "original_sentence": "lạnh quá, giảm hộ chị cái bóng sưởi",
+      "augmented_sentence": "lạnh quá, giảm hộ chị cái bóng sưởi",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.933515"
+    },
+    {
+      "original_sentence": "em ơi tăng cho anh cái radio đến 31% vào lúc 11 giờ 27 phút với",
+      "augmented_sentence": "vào lúc, em ơi tăng cho anh cái radio đến 31% ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.934637"
+    },
+    {
+      "original_sentence": "hơi nhỏ tăng máy nghe nhạc lên hộ mình nhớ",
+      "augmented_sentence": "hơi nhỏ tăng máy nghe nhạc lên hộ mình nhớ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.934637"
+    },
+    {
+      "original_sentence": "tăng cho anh cái radio lên mức 31% nhé",
+      "augmented_sentence": "tăng cho anh cái radio lên mức 31% nhé",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.934637"
+    },
+    {
+      "original_sentence": "tăng cho anh cái radio lên mức 31% nhé",
+      "augmented_sentence": "tăng cho anh cái radio lên mức 31% nhé",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.934637"
+    },
+    {
+      "original_sentence": "cho nhỏ cái đèn sưởi ở trong phòng giặt ủi số 7 xuống mức 52% đi nhé",
+      "augmented_sentence": "cho nhỏ cái đèn sưởi ở trong phòng giặt ủi số 7 xuống mức 52% đi nhé",
+      "method": "synonym_replacement",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.934637"
+    },
+    {
+      "original_sentence": "cho nhỏ cái đèn sưởi ở trong phòng giặt ủi số 7 xuống mức 52% đi nhé",
+      "augmented_sentence": "Có thể cho nhỏ cái đèn sưởi ở trong phòng giặt ủi số 7 xuống mức 52% đi nhé được chứ",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.934637"
+    },
+    {
+      "original_sentence": "cho nhỏ cái đèn sưởi ở trong phòng giặt ủi số 7 xuống mức 52% đi nhé",
+      "augmented_sentence": "ở trong, cho nhỏ cái đèn sưởi ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.934637"
+    },
+    {
+      "original_sentence": "điều chỉnh giúp tôi âm lượng của cái máy radio ở trong phòng truyền thống hừng đông xuống khoảng 69% nhé",
+      "augmented_sentence": "điều chỉnh giúp tôi âm lượng của cái máy máy radio ở trong phòng truyền thống hừng đông xuống khoảng 69% nhé",
+      "method": "synonym_replacement",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.934637"
+    },
+    {
+      "original_sentence": "điều chỉnh giúp tôi âm lượng của cái máy radio ở trong phòng truyền thống hừng đông xuống khoảng 69% nhé",
+      "augmented_sentence": "Xin hãy điều chỉnh giúp tôi âm lượng của cái máy radio ở trong phòng truyền thống hừng đông xuống khoảng 69% nhé",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.934637"
+    },
+    {
+      "original_sentence": "điều chỉnh giúp tôi âm lượng của cái máy radio ở trong phòng truyền thống hừng đông xuống khoảng 69% nhé",
+      "augmented_sentence": "ở trong, điều chỉnh giúp tôi âm lượng của cái máy radio ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.934637"
+    },
+    {
+      "original_sentence": "hạ nhiệt độ cái điều hòa trong phòng thay đồ xuống còn 23 độ c nhé",
+      "augmented_sentence": "hạ nhiệt độ cái điều hòa trong phòng thay đồ xuống còn 23 độ c nhé",
+      "method": "synonym_replacement",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.934637"
+    },
+    {
+      "original_sentence": "hạ nhiệt độ cái điều hòa trong phòng thay đồ xuống còn 23 độ c nhé",
+      "augmented_sentence": "trong phòng, hạ nhiệt độ cái điều hòa ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.934637"
+    },
+    {
+      "original_sentence": "bạn trợ lí ơi giúp mình hạ cái bếp trong phòng bếp xuống 2 nhé",
+      "augmented_sentence": "bạn trợ lí ơi giúp mình hạ cái bếp trong phòng bếp xuống 2 nhé",
+      "method": "synonym_replacement",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.934637"
+    },
+    {
+      "original_sentence": "bạn trợ lý ơi giúp mình cho nhỏ radio của như xuống 14% nhé",
+      "augmented_sentence": "bạn trợ lý ơi giúp mình cho nhỏ radio của như xuống 14% nhé",
+      "method": "synonym_replacement",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.934637"
+    },
+    {
+      "original_sentence": "bạn trợ lý ơi giúp mình cho nhỏ radio của như xuống 14% nhé",
+      "augmented_sentence": "bạn trợ lý ơi giúp mình cho nhỏ radio của như xuống 14% nhé",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.934637"
+    },
+    {
+      "original_sentence": "bạn trợ lý giúp mình tăng cái radio trong phòng chơi game lên 45% nhé",
+      "augmented_sentence": "trong phòng, bạn trợ lý giúp mình tăng cái radio ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.934637"
+    },
+    {
+      "original_sentence": "này cái bếp ở trong phòng bếp ý hạ cho anh đi 2 mức",
+      "augmented_sentence": "này cái bếp ở trong phòng bếp ý hạ cho anh đi 2 mức",
+      "method": "synonym_replacement",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.934637"
+    },
+    {
+      "original_sentence": "này cái bếp ở trong phòng bếp ý hạ cho anh đi 2 mức",
+      "augmented_sentence": "ở trong, này cái bếp ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.935650"
+    },
+    {
+      "original_sentence": "nâng cái radio số 10 lên mức 92%",
+      "augmented_sentence": "nâng cái radio số 10 lên mức 92%",
+      "method": "synonym_replacement",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.935650"
+    },
+    {
+      "original_sentence": "nâng cái radio số 10 lên mức 92%",
+      "augmented_sentence": "nâng cái radio số 10 lên mức 92%",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.935650"
+    },
+    {
+      "original_sentence": "bạn giảm cho mình cái đèn sưởi ở phòng giặt ủi số 7 xuống 52% nhé",
+      "augmented_sentence": "ở phòng, bạn giảm cho mình cái đèn sưởi ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.935650"
+    },
+    {
+      "original_sentence": "bỏ đi 91% độ sáng của bóng sưởi số 19 cho anh",
+      "augmented_sentence": "bỏ đi 91% độ sáng của bóng sưởi số 19 cho anh",
+      "method": "synonym_replacement",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.935650"
+    },
+    {
+      "original_sentence": "bỏ đi 91% độ sáng của bóng sưởi số 19 cho anh",
+      "augmented_sentence": "bỏ đi 91% độ sáng của bóng sưởi số 19 cho anh",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.935650"
+    },
+    {
+      "original_sentence": "em ơi cái bóng sưởi ở hè sau cho xuống 29% nhé",
+      "augmented_sentence": "em ơi cái bóng sưởi ở hè sau cho xuống 29% nhé",
+      "method": "synonym_replacement",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.935650"
+    },
+    {
+      "original_sentence": "em ơi cái bóng sưởi ở hè sau cho xuống 29% nhé",
+      "augmented_sentence": "em ơi cái bóng sưởi ở hè sau cho xuống 29% nhé",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.935650"
+    },
+    {
+      "original_sentence": "em ơi cái bóng sưởi ở hè sau cho xuống 29% nhé",
+      "augmented_sentence": "ở hè, em ơi cái bóng sưởi ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.935650"
+    },
+    {
+      "original_sentence": "cho nhỏ cái lò vi sóng số 6 ở bếp của linh xuống 114 độ c",
+      "augmented_sentence": "cho nhỏ cái lò vi sóng số 6 ở bếp của linh xuống 114 độ c",
+      "method": "synonym_replacement",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.935650"
+    },
+    {
+      "original_sentence": "cho nhỏ cái lò vi sóng số 6 ở bếp của linh xuống 114 độ c",
+      "augmented_sentence": "cho nhỏ cái lò vi sóng số 6 ở bếp của linh xuống 114 độ c",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.935650"
+    },
+    {
+      "original_sentence": "cho nhỏ cái lò vi sóng số 6 ở bếp của linh xuống 114 độ c",
+      "augmented_sentence": "ở bếp, cho nhỏ cái lò vi sóng số 6 ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.935650"
+    },
+    {
+      "original_sentence": "trong bếp của phát ấy cho cái lò vi sóng nhỏ đi khoảng 56 độ c cho anh",
+      "augmented_sentence": "trong bếp của phát ấy cho cái lò vi sóng nhỏ đi khoảng 56 độ c cho anh",
+      "method": "synonym_replacement",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.935650"
+    },
+    {
+      "original_sentence": "trong bếp của phát ấy cho cái lò vi sóng nhỏ đi khoảng 56 độ c cho anh",
+      "augmented_sentence": "Anh/chị ơi trong bếp của phát ấy cho cái lò vi sóng nhỏ đi khoảng 56 độ c cho anh với",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.935650"
+    },
+    {
+      "original_sentence": "trong bếp của phát ấy cho cái lò vi sóng nhỏ đi khoảng 56 độ c cho anh",
+      "augmented_sentence": "trong bếp,  ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.935650"
+    },
+    {
+      "original_sentence": "hạ lò vi sóng số 1 xuống 296 độ c trong 2 tiếng rưỡi cho anh",
+      "augmented_sentence": "hạ lò vi sóng số 1 xuống 296 độ c trong 2 tiếng rưỡi cho anh",
+      "method": "synonym_replacement",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.935650"
+    },
+    {
+      "original_sentence": "tiếng lớn quá hạ tiếng radio trong phòng thay đồ xuống 63% nhé",
+      "augmented_sentence": "tiếng lớn quá hạ tiếng radio trong phòng thay đồ xuống 63% nhé",
+      "method": "synonym_replacement",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.935650"
+    },
+    {
+      "original_sentence": "tiếng lớn quá hạ tiếng radio trong phòng thay đồ xuống 63% nhé",
+      "augmented_sentence": "trong phòng, tiếng lớn quá hạ tiếng radio ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.935650"
+    },
+    {
+      "original_sentence": "hạ bớt 39% của cái bóng sưởi ở ngoài hiên nhé",
+      "augmented_sentence": "hạ bớt 39% của cái bóng sưởi ở ngoài hiên nhé",
+      "method": "synonym_replacement",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.935650"
+    },
+    {
+      "original_sentence": "phòng xem phim nóng quá giảm điều hòa đi 7 độ c cho anh nhé",
+      "augmented_sentence": "phòng xem phim nóng quá giảm điều hòa đi 7 độ c cho anh nhé",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.935650"
+    },
+    {
+      "original_sentence": "hạ lò sưởi xuống 22 độ c lúc 0 rưỡi nhé",
+      "augmented_sentence": "hạ lò sưởi xuống 22 độ c lúc 0 rưỡi nhé",
+      "method": "synonym_replacement",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.935650"
+    },
+    {
+      "original_sentence": "hạ bếp xuống mức 7 vào lúc 7 rưỡi",
+      "augmented_sentence": "hạ bếp xuống mức 7 vào lúc 7 rưỡi",
+      "method": "synonym_replacement",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.935650"
+    },
+    {
+      "original_sentence": "hạ nhiệt độ lò sưởi phòng khách xuống 33 độ c",
+      "augmented_sentence": "hạ nhiệt độ lò sưởi phòng khách xuống 33 độ c",
+      "method": "synonym_replacement",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.935650"
+    },
+    {
+      "original_sentence": "hạ nhiệt độ lò sưởi phòng khách xuống 33 độ c",
+      "augmented_sentence": "hạ nhiệt độ lò sưởi phòng khách xuống 33 độ c",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.935650"
+    },
+    {
+      "original_sentence": "khi nào đến 3 giờ 31 chỉnh cho mình cái lò vi sóng về mức 211 độ c nhớ",
+      "augmented_sentence": "khi nào đến 3 giờ 31 chỉnh cho mình cái lò vi sóng về mức 211 độ c nhớ",
+      "method": "synonym_replacement",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.935650"
+    },
+    {
+      "original_sentence": "khi nào đến 3 giờ 31 chỉnh cho mình cái lò vi sóng về mức 211 độ c nhớ",
+      "augmented_sentence": "Xin hãy khi nào đến 3 giờ 31 chỉnh cho mình cái lò vi sóng về mức 211 độ c nhớ",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.935650"
+    },
+    {
+      "original_sentence": "khi nào đến 3 giờ 31 chỉnh cho mình cái lò vi sóng về mức 211 độ c nhớ",
+      "augmented_sentence": "khi nào đến 3 giờ 31 chỉnh cho mình cái lò vi sóng về mức 211 độ c nhớ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.935650"
+    },
+    {
+      "original_sentence": "cho cái radio trong phòng nhỏ đi 21% cho anh",
+      "augmented_sentence": "cho cái radio trong phòng nhỏ đi 21% cho anh",
+      "method": "synonym_replacement",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.935650"
+    },
+    {
+      "original_sentence": "cho cái radio trong phòng nhỏ đi 21% cho anh",
+      "augmented_sentence": "trong phòng, cho cái radio ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.935650"
+    },
+    {
+      "original_sentence": "đưa nhiệt độ của lò vi sóng số 1 về mức 296 độ c trong vòng 2 tiếng rưỡi",
+      "augmented_sentence": "đưa nhiệt độ của lò vi sóng số 1 về mức 296 độ c trong vòng 2 tiếng rưỡi",
+      "method": "synonym_replacement",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.935650"
+    },
+    {
+      "original_sentence": "đưa nhiệt độ của lò vi sóng số 1 về mức 296 độ c trong vòng 2 tiếng rưỡi",
+      "augmented_sentence": "đưa nhiệt độ của lò vi sóng số 1 về mức 296 độ c trong vòng 2 tiếng rưỡi giúp tôi",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.935650"
+    },
+    {
+      "original_sentence": "cái lò sưởi trong phòng sách số 4 hơi nóng rồi để thấp xuống ở mức 33 độ c thôi",
+      "augmented_sentence": "cái lò sưởi trong phòng sách số 4 hơi nóng rồi để thấp xuống ở mức 33 độ c thôi",
+      "method": "synonym_replacement",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.935650"
+    },
+    {
+      "original_sentence": "cái lò sưởi trong phòng sách số 4 hơi nóng rồi để thấp xuống ở mức 33 độ c thôi",
+      "augmented_sentence": "Giúp tôi cái lò sưởi trong phòng sách số 4 hơi nóng rồi để thấp xuống ở mức 33 độ c thôi",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.935650"
+    },
+    {
+      "original_sentence": "cái lò sưởi trong phòng sách số 4 hơi nóng rồi để thấp xuống ở mức 33 độ c thôi",
+      "augmented_sentence": "trong phòng, cái lò sưởi ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.936865"
+    },
+    {
+      "original_sentence": "chỉnh âm lượng của cái radio trong phòng thay đồ xuống mức 63%",
+      "augmented_sentence": "chỉnh âm lượng của cái radio trong phòng thay đồ xuống mức 63%",
+      "method": "synonym_replacement",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.936865"
+    },
+    {
+      "original_sentence": "chỉnh âm lượng của cái radio trong phòng thay đồ xuống mức 63%",
+      "augmented_sentence": "trong phòng, chỉnh âm lượng của cái radio ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.936865"
+    },
+    {
+      "original_sentence": "hãy để âm lượng của cái radio trong phòng sách của huy lên mức 20%",
+      "augmented_sentence": "hãy để âm lượng của cái radio trong phòng sách của huy lên mức 20%",
+      "method": "synonym_replacement",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.936865"
+    },
+    {
+      "original_sentence": "hãy để âm lượng của cái radio trong phòng sách của huy lên mức 20%",
+      "augmented_sentence": "trong phòng, hãy để âm lượng của cái radio ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.936865"
+    },
+    {
+      "original_sentence": "điều chỉnh cái bóng sưởi bớt đi 6% ở ngoài hiên của em bé",
+      "augmented_sentence": "điều chỉnh cái bóng sưởi bớt đi 6% ở ngoài hiên của em bé",
+      "method": "synonym_replacement",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.936865"
+    },
+    {
+      "original_sentence": "chỉnh cái đèn sưởi ở phòng vệ sinh nhỏ bớt đi 64% cho tôi",
+      "augmented_sentence": "chỉnh cái đèn sưởi ở phòng vệ sinh nhỏ bớt đi 64% cho tôi",
+      "method": "synonym_replacement",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.936865"
+    },
+    {
+      "original_sentence": "chỉnh cái đèn sưởi ở phòng vệ sinh nhỏ bớt đi 64% cho tôi",
+      "augmented_sentence": "ở phòng, chỉnh cái đèn sưởi ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.936865"
+    },
+    {
+      "original_sentence": "hãy đặt lịch cho tôi và bạn bè trong 2 ngày, 3 tiếng 9 phút nhắc lại 1 lần",
+      "augmented_sentence": "hãy đặt lịch cho tôi và bạn bè trong 2 ngày, 3 tiếng 9 phút nhắc lại 1 lần",
+      "method": "synonym_replacement",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.937854"
+    },
+    {
+      "original_sentence": "hãy đặt lịch cho tôi và bạn bè trong 2 ngày, 3 tiếng 9 phút nhắc lại 1 lần",
+      "augmented_sentence": "hãy đặt lịch cho tôi và bạn bè trong 2 ngày, 3 tiếng 9 phút nhắc lại 1 lần",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.937854"
+    },
+    {
+      "original_sentence": "hãy đặt lịch cho tôi và bạn bè trong 2 ngày, 3 tiếng 9 phút nhắc lại 1 lần",
+      "augmented_sentence": "trong 2, hãy đặt lịch cho tôi và bạn bè ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.937854"
+    },
+    {
+      "original_sentence": "tiếng bé thế nhỉ, em ơi tăng cho anh cái máy nghe nhạc lên với",
+      "augmented_sentence": "tiếng bé thế nhỉ, em ơi tăng cho anh cái máy nghe nhạc lên với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.939919"
+    },
+    {
+      "original_sentence": "em ơi, tăng cho anh cái radio lên với",
+      "augmented_sentence": "em ơi, tăng cho anh cái radio lên với",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.939919"
+    },
+    {
+      "original_sentence": "làm ơn hãy tăng radio ở trong phòng thay đồ số 2 lên 38%",
+      "augmented_sentence": "làm ơn hãy tăng radio ở trong phòng thay đồ số 2 lên 38%",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.939919"
+    },
+    {
+      "original_sentence": "làm ơn hãy tăng radio ở trong phòng thay đồ số 2 lên 38%",
+      "augmented_sentence": "ở trong, làm ơn hãy tăng radio ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.940919"
+    },
+    {
+      "original_sentence": "giảm cho anh cái máy lạnh một chút",
+      "augmented_sentence": "giảm cho anh cái máy lạnh một chút",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.940919"
+    },
+    {
+      "original_sentence": "làm ơn hãy giảm đèn sưởi xuống 84%",
+      "augmented_sentence": "làm ơn hãy giảm đèn sưởi xuống 84%",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.940919"
+    },
+    {
+      "original_sentence": "làm ơn hãy giảm đèn sưởi xuống 84%",
+      "augmented_sentence": "làm ơn hãy giảm đèn sưởi xuống 84%",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-12T01:09:33.940919"
+    }
+  ],
+  "timestamp": "20250712_010933"
+}
