@@ -1,0 +1,21 @@
+{"sentence": "bật đèn phòng khách", "intent": "bật thiết bị", "entities": [{"type": "device", "filler": "đèn"}, {"type": "living_space", "filler": "phòng khách"}]}
+{"sentence": "tắt máy lạnh", "intent": "tắt thiết bị", "entities": [{"type": "device", "filler": "máy lạnh"}]}
+{"sentence": "tăng độ sáng đèn bàn", "intent": "tăng độ sáng của thiết bị", "entities": [{"type": "device", "filler": "đèn bàn"}]}
+{"sentence": "giảm âm lượng radio trong phòng ngủ", "intent": "giảm âm lượng của thiết bị", "entities": [{"type": "device", "filler": "radio"}, {"type": "living_space", "filler": "phòng ngủ"}]}
+{"sentence": "kiểm tra tình trạng điều hòa", "intent": "kiểm tra tình trạng thiết bị", "entities": [{"type": "device", "filler": "điều hòa"}]}
+{"sentence": "mở cửa chính lúc 8 giờ tối", "intent": "mở thiết bị", "entities": [{"type": "device", "filler": "cửa chính"}, {"type": "time_at", "filler": "8 giờ tối"}]}
+{"sentence": "đóng rèm phòng ngủ", "intent": "đóng thiết bị", "entities": [{"type": "device", "filler": "rèm"}, {"type": "living_space", "filler": "phòng ngủ"}]}
+{"sentence": "bật quạt trần trong 30 phút", "intent": "bật thiết bị", "entities": [{"type": "device", "filler": "quạt trần"}, {"type": "duration", "filler": "30 phút"}]}
+{"sentence": "tắt tivi sau 1 tiếng", "intent": "tắt thiết bị", "entities": [{"type": "device", "filler": "tivi"}, {"type": "delay_duration", "filler": "1 tiếng"}]}
+{"sentence": "điều chỉnh nhiệt độ điều hòa 25 độ", "intent": "tăng nhiệt độ của thiết bị", "entities": [{"type": "device", "filler": "điều hòa"}, {"type": "target_number", "filler": "25 độ"}]}
+{"sentence": "phát nhạc rock", "intent": "phát nhạc", "entities": [{"type": "music_genre", "filler": "rock"}]}
+{"sentence": "dừng nhạc", "intent": "tắt nhạc", "entities": []}
+{"sentence": "hẹn giờ bật đèn vào 7 giờ sáng", "intent": "hẹn giờ tự động", "entities": [{"type": "device", "filler": "đèn"}, {"type": "time_at", "filler": "7 giờ sáng"}]}
+{"sentence": "hủy hẹn giờ tắt quạt", "intent": "hủy hẹn giờ", "entities": [{"type": "device", "filler": "quạt"}]}
+{"sentence": "hỏi thời tiết hôm nay", "intent": "hỏi thời tiết", "entities": [{"type": "time_at", "filler": "hôm nay"}]}
+{"sentence": "mấy giờ rồi", "intent": "hỏi giờ", "entities": []}
+{"sentence": "bật lò vi sóng ở nhà bếp", "intent": "bật thiết bị", "entities": [{"type": "device", "filler": "lò vi sóng"}, {"type": "living_space", "filler": "nhà bếp"}]}
+{"sentence": "tăng tốc độ quạt lên mức 3", "intent": "tăng tốc độ quạt", "entities": [{"type": "device", "filler": "quạt"}, {"type": "target_number", "filler": "mức 3"}]}
+{"sentence": "giảm độ sáng đèn xuống 50%", "intent": "giảm độ sáng của thiết bị", "entities": [{"type": "device", "filler": "đèn"}, {"type": "target_number", "filler": "50%"}]}
+{"sentence": "bật camera an ninh", "intent": "bật thiết bị", "entities": [{"type": "device", "filler": "camera an ninh"}]}
+{"sentence": "tắt tất cả đèn trong nhà", "intent": "tắt thiết bị", "entities": [{"type": "device", "filler": "tất cả đèn"}, {"type": "living_space", "filler": "trong nhà"}]}
