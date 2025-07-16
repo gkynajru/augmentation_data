@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Export Function</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .success { color: green; }
+        .error { color: red; }
+        #output {
+            margin-top: 20px;
+            padding: 10px;
+            background: #f0f0f0;
+            border-radius: 5px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test Export Functionality</h1>
+    <p>This page tests different export methods to help debug the issue.</p>
+    
+    <h2>Test 1: Basic Download</h2>
+    <button onclick="testBasicDownload()">Test Basic Download</button>
+    
+    <h2>Test 2: CSV Export</h2>
+    <button onclick="testCSVExport()">Test CSV Export</button>
+    
+    <h2>Test 3: JSON Export</h2>
+    <button onclick="testJSONExport()">Test JSON Export</button>
+    
+    <h2>Test 4: Copy to Clipboard</h2>
+    <button onclick="testClipboard()">Copy Test Data to Clipboard</button>
+    
+    <div id="output"></div>
+
+    <script>
+        // Test data
+        const testData = [
+            {
+                Sample_ID: "TEST_001",
+                Original_Sentence: "bật đèn phòng khách",
+                Augmented_Sentence: "Làm ơn bật đèn phòng khách",
+                Quality_Score_1_5: "4",
+                Naturalness_Score_1_5: "5",
+                Approved_Yes_No: "yes"
+            },
+            {
+                Sample_ID: "TEST_002",
+                Original_Sentence: "tắt máy lạnh",
+                Augmented_Sentence: "tắt điều hòa",
+                Quality_Score_1_5: "3",
+                Naturalness_Score_1_5: "4",
+                Approved_Yes_No: "no"
+            }
+        ];
+
+        function log(message, isError = false) {
+            const output = document.getElementById('output');
+            const timestamp = new Date().toLocaleTimeString();
+            const className = isError ? 'error' : 'success';
+            output.innerHTML += `<span class="${className}">[${timestamp}] ${message}</span>\n`;
+        }
+
+        function testBasicDownload() {
+            try {
+                log("Starting basic download test...");
+                
+                const content = "Hello, this is a test file!\nIf you can download this, the basic download works.";
+                const blob = new Blob([content], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'test_download.txt';
+                
+                // Add to body, click, then remove
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                
+                // Clean up
+                URL.revokeObjectURL(url);
+                
+                log("✅ Basic download initiated successfully!");
+            } catch (error) {
+                log(`❌ Basic download failed: ${error.message}`, true);
+            }
+        }
+
+        function testCSVExport() {
+            try {
+                log("Starting CSV export test...");
+                
+                // Create CSV content
+                const headers = Object.keys(testData[0]);
+                const csvContent = [
+                    headers.join(','),
+                    ...testData.map(row => 
+                        headers.map(header => {
+                            const value = row[header] || '';
+                            // Escape quotes and wrap if contains comma
+                            return value.includes(',') ? `"${value.replace(/"/g, '""')}"` : value;
+                        }).join(',')
+                    )
+                ].join('\n');
+                
+                // Download
+                const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.setAttribute('href', url);
+                link.setAttribute('download', 'test_export.csv');
+                
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                URL.revokeObjectURL(url);
+                
+                log("✅ CSV export initiated successfully!");
+                log(`   Exported ${testData.length} rows with ${headers.length} columns`);
+            } catch (error) {
+                log(`❌ CSV export failed: ${error.message}`, true);
+            }
+        }
+
+        function testJSONExport() {
+            try {
+                log("Starting JSON export test...");
+                
+                const jsonContent = JSON.stringify(testData, null, 2);
+                const blob = new Blob([jsonContent], { type: 'application/json;charset=utf-8;' });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.setAttribute('href', url);
+                link.setAttribute('download', 'test_export.json');
+                
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                URL.revokeObjectURL(url);
+                
+                log("✅ JSON export initiated successfully!");
+            } catch (error) {
+                log(`❌ JSON export failed: ${error.message}`, true);
+            }
+        }
+
+        function testClipboard() {
+            try {
+                log("Testing clipboard copy...");
+                
+                const csvContent = testData.map(row => 
+                    `${row.Sample_ID},${row.Quality_Score_1_5},${row.Naturalness_Score_1_5},${row.Approved_Yes_No}`
+                ).join('\n');
+                
+                // Modern clipboard API
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(csvContent).then(() => {
+                        log("✅ Data copied to clipboard using modern API!");
+                        log("   You can now paste it into a text editor");
+                    }).catch(err => {
+                        log(`❌ Modern clipboard API failed: ${err}`, true);
+                        fallbackCopy(csvContent);
+                    });
+                } else {
+                    fallbackCopy(csvContent);
+                }
+            } catch (error) {
+                log(`❌ Clipboard test failed: ${error.message}`, true);
+            }
+        }
+
+        function fallbackCopy(text) {
+            // Fallback method
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            textArea.style.top = "-999999px";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                log("✅ Data copied to clipboard using fallback method!");
+            } catch (err) {
+                log(`❌ Fallback clipboard copy failed: ${err}`, true);
+            }
+            
+            document.body.removeChild(textArea);
+        }
+
+        // Browser compatibility check
+        window.onload = function() {
+            log("Browser compatibility check:");
+            log(`   Browser: ${navigator.userAgent.split(' ').slice(-2).join(' ')}`);
+            log(`   Blob support: ${typeof Blob !== 'undefined' ? '✅' : '❌'}`);
+            log(`   URL.createObjectURL: ${typeof URL.createObjectURL === 'function' ? '✅' : '❌'}`);
+            log(`   Modern clipboard API: ${navigator.clipboard ? '✅' : '❌'}`);
+        };
+    </script>
+</body>
+</html>
