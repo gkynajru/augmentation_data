@@ -19,6 +19,7 @@ from datetime import datetime
 import pandas as pd
 from pathlib import Path
 from collections import Counter
+import numpy as np # <-- THÊM DÒNG NÀY
 
 def load_review_csv(file_path: str) -> pd.DataFrame:
     """
@@ -39,225 +40,214 @@ def load_review_csv(file_path: str) -> pd.DataFrame:
         if missing_columns:
             print(f"❌ Missing required columns: {missing_columns}")
             sys.exit(1)
-        
+            
         print(f"✅ Loaded review file with {len(df)} samples")
         return df
-        
     except FileNotFoundError:
-        print(f"❌ Review file not found: {file_path}")
-        sys.exit(1)
+        raise
     except Exception as e:
         print(f"❌ Error loading review file: {e}")
         sys.exit(1)
 
 def analyze_review_results(df: pd.DataFrame) -> dict:
     """
-    Analyze the review results
+    Analyze the review results and determine approved/rejected samples
     """
     total_samples = len(df)
-    
-    # Count approvals
-    explicit_approvals = df['Approved_Yes_No'].str.lower() == 'yes'
-    explicit_rejections = df['Approved_Yes_No'].str.lower() == 'no'
-    
-    # Count score-based approvals (quality >= 3 AND naturalness >= 3)
+
+    # Clean and analyze 'Approved_Yes_No' column
+    explicit_approvals = df['Approved_Yes_No'].str.lower().str.strip() == 'yes'
+    explicit_rejections = df['Approved_Yes_No'].str.lower().str.strip() == 'no'
+
+    # Convert score columns to numeric, coercing errors to NaN
     quality_scores = pd.to_numeric(df['Quality_Score_1_5'], errors='coerce')
     naturalness_scores = pd.to_numeric(df['Naturalness_Score_1_5'], errors='coerce')
-    
+
+    # Define score-based approval logic (e.g., both scores >= 3)
+    # Samples with NaN scores will not be included in score_based_approvals
     score_based_approvals = (quality_scores >= 3) & (naturalness_scores >= 3)
-    
-    # Combined approvals
+
+    # Define the final approval mask: either explicitly approved OR (score-based approved AND not explicitly rejected)
     approved_mask = explicit_approvals | (score_based_approvals & ~explicit_rejections)
     
-    approved_count = approved_mask.sum()
-    rejected_count = explicit_rejections.sum()
-    unreviewed_count = total_samples - approved_count - rejected_count
-    
-    # Method breakdown
-    method_counts = df['Augmentation_Method'].value_counts().to_dict()
-    approved_by_method = df[approved_mask]['Augmentation_Method'].value_counts().to_dict()
-    
-    # Score statistics
-    avg_quality = quality_scores.mean()
-    avg_naturalness = naturalness_scores.mean()
-    
-    analysis = {
-        'total_samples': total_samples,
-        'approved_count': approved_count,
-        'rejected_count': rejected_count,
-        'unreviewed_count': unreviewed_count,
-        'approval_rate': approved_count / total_samples if total_samples > 0 else 0,
-        'method_breakdown': method_counts,
-        'approved_by_method': approved_by_method,
-        'average_quality_score': avg_quality,
-        'average_naturalness_score': avg_naturalness,
-        'approved_mask': approved_mask
-    }
-    
-    return analysis
+    # Define rejection mask: explicitly rejected OR (not score-based approved AND not explicitly approved)
+    rejected_mask = explicit_rejections | (~score_based_approvals & ~explicit_approvals)
 
-def create_final_dataset(df: pd.DataFrame, approved_mask, strategy: str = "balanced") -> list:
+
+    print(f"Debug: Explicit Approvals Count: {explicit_approvals.sum()}")
+    print(f"Debug: Explicit Rejections Count: {explicit_rejections.sum()}")
+    print(f"Debug: Score-based Approvals Count: {score_based_approvals.sum()}")
+    print(f"Debug: Final Approved Mask Count: {approved_mask.sum()}")
+
+    return {
+        "total_samples": total_samples,
+        "approved_mask": approved_mask, # This is a pandas Series, not directly serializable for JSON report
+        "explicit_approvals_count": explicit_approvals.sum(),
+        "explicit_rejections_count": explicit_rejections.sum(),
+        "score_based_approvals_count": score_based_approvals.sum(),
+        "rejected_count": rejected_mask.sum(), # This will be added to report, might be np.int64
+        "integration_strategy": "balanced" # Default strategy, can be adjusted if multiple strategies are implemented
+    }
+
+def create_final_dataset(df: pd.DataFrame, approved_mask: pd.Series, strategy: str = "balanced") -> list:
     """
     Create the final dataset with approved augmentations
     """
-    approved_df = df[approved_mask].copy()
-    
+    # Use .loc to ensure we work on a copy to avoid SettingWithCopyWarning
+    approved_df = df.loc[approved_mask].copy()
+
     final_samples = []
-    
+
     for _, row in approved_df.iterrows():
         try:
-            # Parse entities JSON
-            original_entities = json.loads(row['Original_Entities']) if row['Original_Entities'] else []
-            augmented_entities = json.loads(row['Augmented_Entities']) if row['Augmented_Entities'] else []
-            
-        except json.JSONDecodeError:
-            print(f"Warning: Invalid JSON in entities for sample {row['Sample_ID']}, skipping")
+            # Ensure entity columns are treated as strings and handle potential NaN or empty strings
+            original_entities_str = str(row['Original_Entities']).strip() if pd.notna(row['Original_Entities']) else ''
+            augmented_entities_str = str(row['Augmented_Entities']).strip() if pd.notna(row['Augmented_Entities']) else ''
+
+            # Attempt to load JSON, default to empty list if parsing fails or string is empty
+            original_entities = json.loads(original_entities_str) if original_entities_str else []
+            augmented_entities = json.loads(augmented_entities_str) if augmented_entities_str else []
+
+        except json.JSONDecodeError as e:
+            # Use original sample ID for more useful warning
+            sample_id = row.get('Sample_ID', 'N/A')
+            print(f"Warning: Invalid JSON in entities for sample {sample_id}, skipping. Error: {e}")
+            continue # Skip this sample if entities are malformed JSON
+        except Exception as e:
+            sample_id = row.get('Sample_ID', 'N/A')
+            print(f"Warning: Unexpected error processing entities for sample {sample_id}, skipping. Error: {e}")
             continue
-        
-        # Create final sample
-        sample = {
-            'sentence': row['Augmented_Sentence'],
-            'intent': row['Augmented_Intent'],
-            'entities': augmented_entities,
-            
-            # Metadata for tracking
-            '_augmented': True,
-            '_augmentation_method': row['Augmentation_Method'],
-            '_original_sentence': row['Original_Sentence'],
-            '_quality_score': row['Quality_Score_1_5'],
-            '_naturalness_score': row['Naturalness_Score_1_5'],
-            '_review_timestamp': datetime.now().isoformat(),
-            '_sample_id': row['Sample_ID']
-        }
-        
-        final_samples.append(sample)
-    
-    print(f"✅ Created {len(final_samples)} approved samples")
+
+        # Ensure entities are always lists, even if JSON was null/empty string or not a list
+        if not isinstance(original_entities, list):
+            original_entities = []
+        if not isinstance(augmented_entities, list):
+            augmented_entities = []
+
+        final_samples.append({
+            "sample_id": int(row['Sample_ID']) if pd.notna(row['Sample_ID']) else None, # Convert to Python int
+            "original_sentence": row['Original_Sentence'],
+            "original_intent": row['Original_Intent'],
+            "original_entities": original_entities,
+            "augmented_sentence": row['Augmented_Sentence'],
+            "augmented_intent": row['Augmented_Intent'],
+            "augmented_entities": augmented_entities,
+            "augmentation_method": row['Augmentation_Method'],
+            "quality_score": int(row['Quality_Score_1_5']) if pd.notna(row['Quality_Score_1_5']) else None, # Convert to Python int
+            "naturalness_score": int(row['Naturalness_Score_1_5']) if pd.notna(row['Naturalness_Score_1_5']) else None, # Convert to Python int
+            "approved": str(row['Approved_Yes_No']).lower().strip() == 'yes'
+        })
+
     return final_samples
 
-def save_final_dataset(samples: list, output_dir: str, format: str = "jsonl") -> str:
+def save_final_dataset(final_samples: list, output_dir: str, file_format: str = "jsonl") -> str:
     """
-    Save the final dataset
+    Save the final dataset to a JSONL or CSV file
     """
-    os.makedirs(output_dir, exist_ok=True)
+    output_path = Path(output_dir) / "final"
+    output_path.mkdir(parents=True, exist_ok=True)
+    
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    
-    if format == "jsonl":
-        output_file = f"{output_dir}/final_dataset_{timestamp}.jsonl"
-        
-        with open(output_file, 'w', encoding='utf-8') as f:
-            for sample in samples:
-                f.write(json.dumps(sample, ensure_ascii=False) + '\n')
-    
-    elif format == "json":
-        output_file = f"{output_dir}/final_dataset_{timestamp}.json"
-        
-        with open(output_file, 'w', encoding='utf-8') as f:
-            json.dump(samples, f, ensure_ascii=False, indent=2)
-    
+    file_name = f"final_dataset_{timestamp}.{file_format}"
+    file_path = output_path / file_name
+
+    if file_format == "jsonl":
+        with open(file_path, 'w', encoding='utf-8') as f:
+            for sample in final_samples:
+                json.dump(sample, f, ensure_ascii=False)
+                f.write('\n')
+    elif file_format == "csv":
+        if not final_samples:
+            df = pd.DataFrame()
+        else:
+            df = pd.DataFrame(final_samples)
+        df.to_csv(file_path, index=False, encoding='utf-8')
     else:
-        raise ValueError(f"Unsupported format: {format}")
-    
-    print(f"💾 Saved final dataset: {output_file}")
-    return output_file
+        raise ValueError(f"Unsupported output format: {file_format}")
+        
+    return str(file_path)
+
+# Hàm trợ giúp để chuyển đổi các kiểu dữ liệu numpy sang kiểu Python chuẩn để JSON hóa
+def convert_numpy_types_for_json(obj):
+    if isinstance(obj, dict):
+        return {k: convert_numpy_types_for_json(v) for k, v in obj.items()}
+    elif isinstance(obj, list):
+        return [convert_numpy_types_for_json(elem) for elem in obj]
+    elif isinstance(obj, np.integer): # Xử lý numpy.int64, numpy.int32, v.v.
+        return int(obj) # Chuyển đổi thành int Python tiêu chuẩn
+    elif isinstance(obj, np.floating): # Xử lý numpy.float64, numpy.float32, v.v.
+        return float(obj) # Chuyển đổi thành float Python tiêu chuẩn
+    elif pd.isna(obj): # Xử lý các giá trị NA của pandas (vd: từ scores bị lỗi)
+        return None
+    else:
+        return obj
 
 def save_integration_report(analysis: dict, final_samples: list, output_dir: str) -> str:
     """
-    Save integration report
+    Save the integration report to a JSON file
     """
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    report_file = f"{output_dir}/integration_report_{timestamp}.json"
+    output_path = Path(output_dir) / "report"
+    output_path.mkdir(parents=True, exist_ok=True)
     
-    # Remove the mask from analysis (not JSON serializable)
-    report_analysis = analysis.copy()
-    if 'approved_mask' in report_analysis:
-        del report_analysis['approved_mask']
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    file_name = f"integration_report_{timestamp}.json"
+    file_path = output_path / file_name
     
     report = {
-        'integration_timestamp': datetime.now().isoformat(),
-        'review_analysis': report_analysis,
-        'final_dataset_size': len(final_samples),
-        'integration_summary': {
-            'total_reviewed': analysis['total_samples'],
-            'approved_samples': analysis['approved_count'],
-            'approval_rate': f"{analysis['approval_rate']:.1%}",
-            'average_quality': f"{analysis['average_quality_score']:.2f}" if not pd.isna(analysis['average_quality_score']) else "N/A",
-            'average_naturalness': f"{analysis['average_naturalness_score']:.2f}" if not pd.isna(analysis['average_naturalness_score']) else "N/A"
-        },
-        'method_performance': {
-            method: {
-                'total_generated': analysis['method_breakdown'].get(method, 0),
-                'approved': analysis['approved_by_method'].get(method, 0),
-                'approval_rate': analysis['approved_by_method'].get(method, 0) / analysis['method_breakdown'].get(method, 1)
-            }
-            for method in analysis['method_breakdown'].keys()
-        }
+        "report_generated_at": datetime.now().isoformat(),
+        "total_samples_in_review_file": analysis['total_samples'],
+        "approved_samples_count": len(final_samples), # Đây đã là int chuẩn
+        "rejected_samples_count": analysis['rejected_count'], 
+        "explicitly_approved_count": analysis['explicit_approvals_count'],
+        "explicitly_rejected_count": analysis['explicit_rejections_count'],
+        "score_based_approvals_count": analysis['score_based_approvals_count'],
+        "integration_strategy": analysis['integration_strategy'], 
+        "notes": "This report summarizes the integration of human-reviewed augmented samples."
     }
+
+    # Chuyển đổi bất kỳ kiểu numpy nào trong từ điển báo cáo sang kiểu Python chuẩn
+    report_to_dump = convert_numpy_types_for_json(report)
     
-    with open(report_file, 'w', encoding='utf-8') as f:
-        json.dump(report, f, ensure_ascii=False, indent=2)
-    
-    print(f"📊 Saved integration report: {report_file}")
-    return report_file
+    with open(file_path, 'w', encoding='utf-8') as f:
+        json.dump(report_to_dump, f, ensure_ascii=False, indent=2)
+        
+    return str(file_path)
 
 def print_integration_summary(analysis: dict, final_samples: list):
     """
-    Print integration summary
+    Print a summary of the integration process
     """
-    print("\n" + "="*60)
-    print("🎉 DATA INTEGRATION COMPLETE!")
-    print("="*60)
+    total_samples = analysis['total_samples']
+    approved_count = len(final_samples)
+    rejected_count = analysis['rejected_count'] 
     
-    print(f"📊 Review Analysis:")
-    print(f"   Total samples reviewed: {analysis['total_samples']:,}")
-    print(f"   Approved samples: {analysis['approved_count']:,}")
-    print(f"   Rejected samples: {analysis['rejected_count']:,}")
-    print(f"   Unreviewed samples: {analysis['unreviewed_count']:,}")
-    print(f"   Approval rate: {analysis['approval_rate']:.1%}")
-    
-    if not pd.isna(analysis['average_quality_score']):
-        print(f"   Average quality score: {analysis['average_quality_score']:.2f}/5")
-    if not pd.isna(analysis['average_naturalness_score']):
-        print(f"   Average naturalness score: {analysis['average_naturalness_score']:.2f}/5")
-    
-    print(f"\n🔧 Method Performance:")
-    for method in analysis['method_breakdown'].keys():
-        total = analysis['method_breakdown'][method]
-        approved = analysis['approved_by_method'].get(method, 0)
-        rate = approved / total if total > 0 else 0
-        print(f"   {method}: {approved}/{total} ({rate:.1%})")
-    
-    print(f"\n✅ Final Dataset:")
-    print(f"   Approved augmented samples: {len(final_samples):,}")
-    print(f"   Ready for training integration!")
-    
-    print(f"\n📝 Next Steps:")
-    print(f"   1. Upload the final dataset to your training environment")
-    print(f"   2. Load into your processor/training pipeline") 
-    print(f"   3. Train your model with the augmented data")
-    print(f"   4. Monitor performance improvements!")
+    print("\n--- Integration Summary ---")
+    print(f"Total samples in review file: {total_samples}")
+    print(f"Approved samples integrated: {approved_count}")
+    print(f"Rejected samples (initial analysis): {rejected_count}") 
+    print(f"Explicitly approved: {analysis['explicit_approvals_count']}")
+    print(f"Explicitly rejected: {analysis['explicit_rejections_count']}")
+    print(f"Score-based approvals (>=3 quality & naturalness): {analysis['score_based_approvals_count']}")
+    print("---------------------------\n")
 
 def main():
-    parser = argparse.ArgumentParser(description='Integrate approved augmented data')
-    
-    parser.add_argument('--review-file', '-r', required=True,
-                       help='Path to reviewed CSV file')
-    parser.add_argument('--output', '-o', default='data/output/final',
-                       help='Output directory for final dataset')
-    parser.add_argument('--format', '-f', choices=['jsonl', 'json'], default='jsonl',
-                       help='Output format (jsonl or json)')
-    parser.add_argument('--strategy', '-s', choices=['all', 'balanced', 'selective'], 
-                       default='balanced',
-                       help='Integration strategy')
-    parser.add_argument('--min-quality', type=float, default=3.0,
-                       help='Minimum quality score for approval')
-    parser.add_argument('--min-naturalness', type=float, default=3.0,
-                       help='Minimum naturalness score for approval')
-    
+    parser = argparse.ArgumentParser(description="Integrate human-approved augmented samples into the dataset.")
+    parser.add_argument("--review-file", type=str, required=True,
+                        help="Path to the reviewed CSV file (e.g., data/output/review/reviewed_samples.csv)")
+    parser.add_argument("--output", type=str, default="data/output/",
+                        help="Output directory for final dataset and report")
+    parser.add_argument("--format", type=str, default="jsonl", choices=["jsonl", "csv"],
+                        help="Output format for the final dataset (jsonl or csv)")
+    parser.add_argument("--strategy", type=str, default="balanced",
+                        choices=["balanced", "all_approved", "score_only"],
+                        help="Integration strategy for selecting samples")
+
     args = parser.parse_args()
-    
-    # Validate input file
-    if not os.path.exists(args.review_file):
+
+    # Ensure output directory exists
+    Path(args.output).mkdir(parents=True, exist_ok=True)
+
+    if not Path(args.review_file).exists():
         print(f"❌ Review file not found: {args.review_file}")
         sys.exit(1)
     
@@ -294,10 +284,6 @@ def main():
     print(f"\n📁 Output Files:")
     print(f"   Final dataset: {final_file}")
     print(f"   Integration report: {report_file}")
-    
-    print(f"\n🚀 Ready for Training!")
-    print(f"   Upload {final_file} to your training environment")
-    print(f"   Expected improvement: F1 Macro 21% → 45-60%")
 
 if __name__ == "__main__":
     main()

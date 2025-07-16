@@ -1,0 +1,1187 @@
+{
+  "metadata": {
+    "timestamp": "20250716_221849",
+    "total_augmentations": 35,
+    "generation_timestamp": "2025-07-16T22:18:49.715094"
+  },
+  "augmentations": [
+    {
+      "original_sentence": "bật đèn phòng khách",
+      "augmented_sentence": "kích hoạt đèn phòng khách",
+      "original_intent": "bật thiết bị",
+      "augmented_intent": "bật thiết bị",
+      "original_entities": [
+        {
+          "type": "device",
+          "filler": "đèn"
+        },
+        {
+          "type": "living_space",
+          "filler": "phòng khách"
+        }
+      ],
+      "augmented_entities": [
+        {
+          "type": "device",
+          "filler": "đèn"
+        },
+        {
+          "type": "living_space",
+          "filler": "phòng khách"
+        }
+      ],
+      "method": "synonym_replacement",
+      "metadata": {
+        "method": "synonym_replacement",
+        "original_length": 4,
+        "augmented_length": 5,
+        "length_ratio": 1.25,
+        "entity_count_preserved": true
+      },
+      "quality_passed": true,
+      "timestamp": "2025-07-16T22:18:49.713102"
+    },
+    {
+      "original_sentence": "tắt máy lạnh",
+      "augmented_sentence": "ngắt máy lạnh",
+      "original_intent": "tắt thiết bị",
+      "augmented_intent": "tắt thiết bị",
+      "original_entities": [
+        {
+          "type": "device",
+          "filler": "máy lạnh"
+        }
+      ],
+      "augmented_entities": [
+        {
+          "type": "device",
+          "filler": "máy lạnh"
+        }
+      ],
+      "method": "synonym_replacement",
+      "metadata": {
+        "method": "synonym_replacement",
+        "original_length": 3,
+        "augmented_length": 3,
+        "length_ratio": 1.0,
+        "entity_count_preserved": true
+      },
+      "quality_passed": true,
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "tăng độ sáng đèn bàn",
+      "augmented_sentence": "tăng lên độ sáng đèn bàn",
+      "original_intent": "tăng độ sáng của thiết bị",
+      "augmented_intent": "tăng độ sáng của thiết bị",
+      "original_entities": [
+        {
+          "type": "device",
+          "filler": "đèn bàn"
+        }
+      ],
+      "augmented_entities": [
+        {
+          "type": "device",
+          "filler": "đèn bàn"
+        }
+      ],
+      "method": "synonym_replacement",
+      "metadata": {
+        "method": "synonym_replacement",
+        "original_length": 5,
+        "augmented_length": 6,
+        "length_ratio": 1.2,
+        "entity_count_preserved": true
+      },
+      "quality_passed": true,
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "tăng độ sáng đèn bàn",
+      "augmented_sentence": "Làm ơn tăng độ sáng đèn bàn",
+      "original_intent": "tăng độ sáng của thiết bị",
+      "augmented_intent": "tăng độ sáng của thiết bị",
+      "original_entities": [
+        {
+          "type": "device",
+          "filler": "đèn bàn"
+        }
+      ],
+      "augmented_entities": [
+        {
+          "type": "device",
+          "filler": "đèn bàn"
+        }
+      ],
+      "method": "politeness_addition",
+      "metadata": {
+        "method": "politeness_addition",
+        "original_length": 5,
+        "augmented_length": 7,
+        "length_ratio": 1.4,
+        "entity_count_preserved": true
+      },
+      "quality_passed": true,
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "giảm âm lượng radio trong phòng ngủ",
+      "augmented_sentence": "hạ âm lượng radio trong phòng ngủ",
+      "original_intent": "giảm âm lượng của thiết bị",
+      "augmented_intent": "giảm âm lượng của thiết bị",
+      "original_entities": [
+        {
+          "type": "device",
+          "filler": "radio"
+        },
+        {
+          "type": "living_space",
+          "filler": "phòng ngủ"
+        }
+      ],
+      "augmented_entities": [
+        {
+          "type": "device",
+          "filler": "radio"
+        },
+        {
+          "type": "living_space",
+          "filler": "phòng ngủ"
+        }
+      ],
+      "method": "synonym_replacement",
+      "metadata": {
+        "method": "synonym_replacement",
+        "original_length": 7,
+        "augmented_length": 7,
+        "length_ratio": 1.0,
+        "entity_count_preserved": true
+      },
+      "quality_passed": true,
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "giảm âm lượng radio trong phòng ngủ",
+      "augmented_sentence": "Anh/chị ơi giảm âm lượng radio trong phòng ngủ nha",
+      "original_intent": "giảm âm lượng của thiết bị",
+      "augmented_intent": "giảm âm lượng của thiết bị",
+      "original_entities": [
+        {
+          "type": "device",
+          "filler": "radio"
+        },
+        {
+          "type": "living_space",
+          "filler": "phòng ngủ"
+        }
+      ],
+      "augmented_entities": [
+        {
+          "type": "device",
+          "filler": "radio"
+        },
+        {
+          "type": "living_space",
+          "filler": "phòng ngủ"
+        }
+      ],
+      "method": "politeness_addition",
+      "metadata": {
+        "method": "politeness_addition",
+        "original_length": 7,
+        "augmented_length": 10,
+        "length_ratio": 1.4285714285714286,
+        "entity_count_preserved": true
+      },
+      "quality_passed": true,
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "giảm âm lượng radio trong phòng ngủ",
+      "augmented_sentence": "trong phòng, giảm âm lượng radio ",
+      "original_intent": "giảm âm lượng của thiết bị",
+      "augmented_intent": "giảm âm lượng của thiết bị",
+      "original_entities": [
+        {
+          "type": "device",
+          "filler": "radio"
+        },
+        {
+          "type": "living_space",
+          "filler": "phòng ngủ"
+        }
+      ],
+      "augmented_entities": [
+        {
+          "type": "device",
+          "filler": "radio"
+        },
+        {
+          "type": "living_space",
+          "filler": "phòng ngủ"
+        }
+      ],
+      "method": "sentence_restructuring",
+      "metadata": {
+        "method": "sentence_restructuring",
+        "original_length": 7,
+        "augmented_length": 6,
+        "length_ratio": 0.8571428571428571,
+        "entity_count_preserved": true
+      },
+      "quality_passed": true,
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "kiểm tra tình trạng điều hòa",
+      "augmented_sentence": "Xin hãy kiểm tra tình trạng điều hòa đi",
+      "original_intent": "kiểm tra tình trạng thiết bị",
+      "augmented_intent": "kiểm tra tình trạng thiết bị",
+      "original_entities": [
+        {
+          "type": "device",
+          "filler": "điều hòa"
+        }
+      ],
+      "augmented_entities": [
+        {
+          "type": "device",
+          "filler": "điều hòa"
+        }
+      ],
+      "method": "politeness_addition",
+      "metadata": {
+        "method": "politeness_addition",
+        "original_length": 6,
+        "augmented_length": 9,
+        "length_ratio": 1.5,
+        "entity_count_preserved": true
+      },
+      "quality_passed": true,
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "mở cửa chính lúc 8 giờ tối",
+      "augmented_sentence": "bật cửa chính lúc 8 giờ tối",
+      "original_intent": "mở thiết bị",
+      "augmented_intent": "mở thiết bị",
+      "original_entities": [
+        {
+          "type": "device",
+          "filler": "cửa chính"
+        },
+        {
+          "type": "time_at",
+          "filler": "8 giờ tối"
+        }
+      ],
+      "augmented_entities": [
+        {
+          "type": "device",
+          "filler": "cửa chính"
+        },
+        {
+          "type": "time_at",
+          "filler": "8 giờ tối"
+        }
+      ],
+      "method": "synonym_replacement",
+      "metadata": {
+        "method": "synonym_replacement",
+        "original_length": 7,
+        "augmented_length": 7,
+        "length_ratio": 1.0,
+        "entity_count_preserved": true
+      },
+      "quality_passed": true,
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "mở cửa chính lúc 8 giờ tối",
+      "augmented_sentence": "lúc 8, mở cửa chính ",
+      "original_intent": "mở thiết bị",
+      "augmented_intent": "mở thiết bị",
+      "original_entities": [
+        {
+          "type": "device",
+          "filler": "cửa chính"
+        },
+        {
+          "type": "time_at",
+          "filler": "8 giờ tối"
+        }
+      ],
+      "augmented_entities": [
+        {
+          "type": "device",
+          "filler": "cửa chính"
+        },
+        {
+          "type": "time_at",
+          "filler": "8 giờ tối"
+        }
+      ],
+      "method": "sentence_restructuring",
+      "metadata": {
+        "method": "sentence_restructuring",
+        "original_length": 7,
+        "augmented_length": 5,
+        "length_ratio": 0.7142857142857143,
+        "entity_count_preserved": true
+      },
+      "quality_passed": true,
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "đóng rèm phòng ngủ",
+      "augmented_sentence": "ngắt rèm phòng ngủ",
+      "original_intent": "đóng thiết bị",
+      "augmented_intent": "đóng thiết bị",
+      "original_entities": [
+        {
+          "type": "device",
+          "filler": "rèm"
+        },
+        {
+          "type": "living_space",
+          "filler": "phòng ngủ"
+        }
+      ],
+      "augmented_entities": [
+        {
+          "type": "device",
+          "filler": "rèm"
+        },
+        {
+          "type": "living_space",
+          "filler": "phòng ngủ"
+        }
+      ],
+      "method": "synonym_replacement",
+      "metadata": {
+        "method": "synonym_replacement",
+        "original_length": 4,
+        "augmented_length": 4,
+        "length_ratio": 1.0,
+        "entity_count_preserved": true
+      },
+      "quality_passed": true,
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "đóng rèm phòng ngủ",
+      "augmented_sentence": "đóng rèm phòng ngủ nhé",
+      "original_intent": "đóng thiết bị",
+      "augmented_intent": "đóng thiết bị",
+      "original_entities": [
+        {
+          "type": "device",
+          "filler": "rèm"
+        },
+        {
+          "type": "living_space",
+          "filler": "phòng ngủ"
+        }
+      ],
+      "augmented_entities": [
+        {
+          "type": "device",
+          "filler": "rèm"
+        },
+        {
+          "type": "living_space",
+          "filler": "phòng ngủ"
+        }
+      ],
+      "method": "politeness_addition",
+      "metadata": {
+        "method": "politeness_addition",
+        "original_length": 4,
+        "augmented_length": 5,
+        "length_ratio": 1.25,
+        "entity_count_preserved": true
+      },
+      "quality_passed": true,
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "bật quạt trần trong 30 phút",
+      "augmented_sentence": "kích hoạt quạt trần trong 30 phút",
+      "original_intent": "bật thiết bị",
+      "augmented_intent": "bật thiết bị",
+      "original_entities": [
+        {
+          "type": "device",
+          "filler": "quạt trần"
+        },
+        {
+          "type": "duration",
+          "filler": "30 phút"
+        }
+      ],
+      "augmented_entities": [
+        {
+          "type": "device",
+          "filler": "quạt trần"
+        },
+        {
+          "type": "duration",
+          "filler": "30 phút"
+        }
+      ],
+      "method": "synonym_replacement",
+      "metadata": {
+        "method": "synonym_replacement",
+        "original_length": 6,
+        "augmented_length": 7,
+        "length_ratio": 1.1666666666666667,
+        "entity_count_preserved": true
+      },
+      "quality_passed": true,
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "bật quạt trần trong 30 phút",
+      "augmented_sentence": "Có thể bật quạt trần trong 30 phút với",
+      "original_intent": "bật thiết bị",
+      "augmented_intent": "bật thiết bị",
+      "original_entities": [
+        {
+          "type": "device",
+          "filler": "quạt trần"
+        },
+        {
+          "type": "duration",
+          "filler": "30 phút"
+        }
+      ],
+      "augmented_entities": [
+        {
+          "type": "device",
+          "filler": "quạt trần"
+        },
+        {
+          "type": "duration",
+          "filler": "30 phút"
+        }
+      ],
+      "method": "politeness_addition",
+      "metadata": {
+        "method": "politeness_addition",
+        "original_length": 6,
+        "augmented_length": 9,
+        "length_ratio": 1.5,
+        "entity_count_preserved": true
+      },
+      "quality_passed": true,
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "bật quạt trần trong 30 phút",
+      "augmented_sentence": "trong 30, bật quạt trần ",
+      "original_intent": "bật thiết bị",
+      "augmented_intent": "bật thiết bị",
+      "original_entities": [
+        {
+          "type": "device",
+          "filler": "quạt trần"
+        },
+        {
+          "type": "duration",
+          "filler": "30 phút"
+        }
+      ],
+      "augmented_entities": [
+        {
+          "type": "device",
+          "filler": "quạt trần"
+        },
+        {
+          "type": "duration",
+          "filler": "30 phút"
+        }
+      ],
+      "method": "sentence_restructuring",
+      "metadata": {
+        "method": "sentence_restructuring",
+        "original_length": 6,
+        "augmented_length": 5,
+        "length_ratio": 0.8333333333333334,
+        "entity_count_preserved": true
+      },
+      "quality_passed": true,
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "tắt tivi sau 1 tiếng",
+      "augmented_sentence": "ngắt tivi sau 1 tiếng",
+      "original_intent": "tắt thiết bị",
+      "augmented_intent": "tắt thiết bị",
+      "original_entities": [
+        {
+          "type": "device",
+          "filler": "tivi"
+        },
+        {
+          "type": "delay_duration",
+          "filler": "1 tiếng"
+        }
+      ],
+      "augmented_entities": [
+        {
+          "type": "device",
+          "filler": "tivi"
+        },
+        {
+          "type": "delay_duration",
+          "filler": "1 tiếng"
+        }
+      ],
+      "method": "synonym_replacement",
+      "metadata": {
+        "method": "synonym_replacement",
+        "original_length": 5,
+        "augmented_length": 5,
+        "length_ratio": 1.0,
+        "entity_count_preserved": true
+      },
+      "quality_passed": true,
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "tắt tivi sau 1 tiếng",
+      "augmented_sentence": "Xin hãy tắt tivi sau 1 tiếng",
+      "original_intent": "tắt thiết bị",
+      "augmented_intent": "tắt thiết bị",
+      "original_entities": [
+        {
+          "type": "device",
+          "filler": "tivi"
+        },
+        {
+          "type": "delay_duration",
+          "filler": "1 tiếng"
+        }
+      ],
+      "augmented_entities": [
+        {
+          "type": "device",
+          "filler": "tivi"
+        },
+        {
+          "type": "delay_duration",
+          "filler": "1 tiếng"
+        }
+      ],
+      "method": "politeness_addition",
+      "metadata": {
+        "method": "politeness_addition",
+        "original_length": 5,
+        "augmented_length": 7,
+        "length_ratio": 1.4,
+        "entity_count_preserved": true
+      },
+      "quality_passed": true,
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "điều chỉnh nhiệt độ điều hòa 25 độ",
+      "augmented_sentence": "điều chỉnh nhiệt độ điều hòa 25 độ với",
+      "original_intent": "tăng nhiệt độ của thiết bị",
+      "augmented_intent": "tăng nhiệt độ của thiết bị",
+      "original_entities": [
+        {
+          "type": "device",
+          "filler": "điều hòa"
+        },
+        {
+          "type": "target_number",
+          "filler": "25 độ"
+        }
+      ],
+      "augmented_entities": [
+        {
+          "type": "device",
+          "filler": "điều hòa"
+        },
+        {
+          "type": "target_number",
+          "filler": "25 độ"
+        }
+      ],
+      "method": "politeness_addition",
+      "metadata": {
+        "method": "politeness_addition",
+        "original_length": 8,
+        "augmented_length": 9,
+        "length_ratio": 1.125,
+        "entity_count_preserved": true
+      },
+      "quality_passed": true,
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "phát nhạc rock",
+      "augmented_sentence": "Bạn ơi phát nhạc rock đi",
+      "original_intent": "phát nhạc",
+      "augmented_intent": "phát nhạc",
+      "original_entities": [
+        {
+          "type": "music_genre",
+          "filler": "rock"
+        }
+      ],
+      "augmented_entities": [
+        {
+          "type": "music_genre",
+          "filler": "rock"
+        }
+      ],
+      "method": "politeness_addition",
+      "metadata": {
+        "method": "politeness_addition",
+        "original_length": 3,
+        "augmented_length": 6,
+        "length_ratio": 2.0,
+        "entity_count_preserved": true
+      },
+      "quality_passed": true,
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "dừng nhạc",
+      "augmented_sentence": "dừng nhạc được không",
+      "original_intent": "tắt nhạc",
+      "augmented_intent": "tắt nhạc",
+      "original_entities": [],
+      "augmented_entities": [],
+      "method": "politeness_addition",
+      "metadata": {
+        "method": "politeness_addition",
+        "original_length": 2,
+        "augmented_length": 4,
+        "length_ratio": 2.0,
+        "entity_count_preserved": true
+      },
+      "quality_passed": true,
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "hẹn giờ bật đèn vào 7 giờ sáng",
+      "augmented_sentence": "hẹn giờ kích hoạt đèn vào 7 giờ sáng",
+      "original_intent": "hẹn giờ tự động",
+      "augmented_intent": "hẹn giờ tự động",
+      "original_entities": [
+        {
+          "type": "device",
+          "filler": "đèn"
+        },
+        {
+          "type": "time_at",
+          "filler": "7 giờ sáng"
+        }
+      ],
+      "augmented_entities": [
+        {
+          "type": "device",
+          "filler": "đèn"
+        },
+        {
+          "type": "time_at",
+          "filler": "7 giờ sáng"
+        }
+      ],
+      "method": "synonym_replacement",
+      "metadata": {
+        "method": "synonym_replacement",
+        "original_length": 8,
+        "augmented_length": 9,
+        "length_ratio": 1.125,
+        "entity_count_preserved": true
+      },
+      "quality_passed": true,
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "hẹn giờ bật đèn vào 7 giờ sáng",
+      "augmented_sentence": "hẹn giờ bật đèn vào 7 giờ sáng được chứ",
+      "original_intent": "hẹn giờ tự động",
+      "augmented_intent": "hẹn giờ tự động",
+      "original_entities": [
+        {
+          "type": "device",
+          "filler": "đèn"
+        },
+        {
+          "type": "time_at",
+          "filler": "7 giờ sáng"
+        }
+      ],
+      "augmented_entities": [
+        {
+          "type": "device",
+          "filler": "đèn"
+        },
+        {
+          "type": "time_at",
+          "filler": "7 giờ sáng"
+        }
+      ],
+      "method": "politeness_addition",
+      "metadata": {
+        "method": "politeness_addition",
+        "original_length": 8,
+        "augmented_length": 10,
+        "length_ratio": 1.25,
+        "entity_count_preserved": true
+      },
+      "quality_passed": true,
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "hẹn giờ bật đèn vào 7 giờ sáng",
+      "augmented_sentence": "vào 7, hẹn giờ bật đèn ",
+      "original_intent": "hẹn giờ tự động",
+      "augmented_intent": "hẹn giờ tự động",
+      "original_entities": [
+        {
+          "type": "device",
+          "filler": "đèn"
+        },
+        {
+          "type": "time_at",
+          "filler": "7 giờ sáng"
+        }
+      ],
+      "augmented_entities": [
+        {
+          "type": "device",
+          "filler": "đèn"
+        },
+        {
+          "type": "time_at",
+          "filler": "7 giờ sáng"
+        }
+      ],
+      "method": "sentence_restructuring",
+      "metadata": {
+        "method": "sentence_restructuring",
+        "original_length": 8,
+        "augmented_length": 6,
+        "length_ratio": 0.75,
+        "entity_count_preserved": true
+      },
+      "quality_passed": true,
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "hủy hẹn giờ tắt quạt",
+      "augmented_sentence": "hủy hẹn giờ ngắt quạt",
+      "original_intent": "hủy hẹn giờ",
+      "augmented_intent": "hủy hẹn giờ",
+      "original_entities": [
+        {
+          "type": "device",
+          "filler": "quạt"
+        }
+      ],
+      "augmented_entities": [
+        {
+          "type": "device",
+          "filler": "quạt"
+        }
+      ],
+      "method": "synonym_replacement",
+      "metadata": {
+        "method": "synonym_replacement",
+        "original_length": 5,
+        "augmented_length": 5,
+        "length_ratio": 1.0,
+        "entity_count_preserved": true
+      },
+      "quality_passed": true,
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "hỏi thời tiết hôm nay",
+      "augmented_sentence": "Giúp tôi hỏi thời tiết hôm nay nha",
+      "original_intent": "hỏi thời tiết",
+      "augmented_intent": "hỏi thời tiết",
+      "original_entities": [
+        {
+          "type": "time_at",
+          "filler": "hôm nay"
+        }
+      ],
+      "augmented_entities": [
+        {
+          "type": "time_at",
+          "filler": "hôm nay"
+        }
+      ],
+      "method": "politeness_addition",
+      "metadata": {
+        "method": "politeness_addition",
+        "original_length": 5,
+        "augmented_length": 8,
+        "length_ratio": 1.6,
+        "entity_count_preserved": true
+      },
+      "quality_passed": true,
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "bật lò vi sóng ở nhà bếp",
+      "augmented_sentence": "mở lò vi sóng ở nhà bếp",
+      "original_intent": "bật thiết bị",
+      "augmented_intent": "bật thiết bị",
+      "original_entities": [
+        {
+          "type": "device",
+          "filler": "lò vi sóng"
+        },
+        {
+          "type": "living_space",
+          "filler": "nhà bếp"
+        }
+      ],
+      "augmented_entities": [
+        {
+          "type": "device",
+          "filler": "lò vi sóng"
+        },
+        {
+          "type": "living_space",
+          "filler": "nhà bếp"
+        }
+      ],
+      "method": "synonym_replacement",
+      "metadata": {
+        "method": "synonym_replacement",
+        "original_length": 7,
+        "augmented_length": 7,
+        "length_ratio": 1.0,
+        "entity_count_preserved": true
+      },
+      "quality_passed": true,
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "bật lò vi sóng ở nhà bếp",
+      "augmented_sentence": "ở nhà, bật lò vi sóng ",
+      "original_intent": "bật thiết bị",
+      "augmented_intent": "bật thiết bị",
+      "original_entities": [
+        {
+          "type": "device",
+          "filler": "lò vi sóng"
+        },
+        {
+          "type": "living_space",
+          "filler": "nhà bếp"
+        }
+      ],
+      "augmented_entities": [
+        {
+          "type": "device",
+          "filler": "lò vi sóng"
+        },
+        {
+          "type": "living_space",
+          "filler": "nhà bếp"
+        }
+      ],
+      "method": "sentence_restructuring",
+      "metadata": {
+        "method": "sentence_restructuring",
+        "original_length": 7,
+        "augmented_length": 6,
+        "length_ratio": 0.8571428571428571,
+        "entity_count_preserved": true
+      },
+      "quality_passed": true,
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "tăng tốc độ quạt lên mức 3",
+      "augmented_sentence": "nâng tốc độ quạt lên mức 3",
+      "original_intent": "tăng tốc độ quạt",
+      "augmented_intent": "tăng tốc độ quạt",
+      "original_entities": [
+        {
+          "type": "device",
+          "filler": "quạt"
+        },
+        {
+          "type": "target_number",
+          "filler": "mức 3"
+        }
+      ],
+      "augmented_entities": [
+        {
+          "type": "device",
+          "filler": "quạt"
+        },
+        {
+          "type": "target_number",
+          "filler": "mức 3"
+        }
+      ],
+      "method": "synonym_replacement",
+      "metadata": {
+        "method": "synonym_replacement",
+        "original_length": 7,
+        "augmented_length": 7,
+        "length_ratio": 1.0,
+        "entity_count_preserved": true
+      },
+      "quality_passed": true,
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "tăng tốc độ quạt lên mức 3",
+      "augmented_sentence": "tăng tốc độ quạt lên mức 3 được chứ",
+      "original_intent": "tăng tốc độ quạt",
+      "augmented_intent": "tăng tốc độ quạt",
+      "original_entities": [
+        {
+          "type": "device",
+          "filler": "quạt"
+        },
+        {
+          "type": "target_number",
+          "filler": "mức 3"
+        }
+      ],
+      "augmented_entities": [
+        {
+          "type": "device",
+          "filler": "quạt"
+        },
+        {
+          "type": "target_number",
+          "filler": "mức 3"
+        }
+      ],
+      "method": "politeness_addition",
+      "metadata": {
+        "method": "politeness_addition",
+        "original_length": 7,
+        "augmented_length": 9,
+        "length_ratio": 1.2857142857142858,
+        "entity_count_preserved": true
+      },
+      "quality_passed": true,
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "giảm độ sáng đèn xuống 50%",
+      "augmented_sentence": "điều chỉnh xuống độ sáng đèn xuống 50%",
+      "original_intent": "giảm độ sáng của thiết bị",
+      "augmented_intent": "giảm độ sáng của thiết bị",
+      "original_entities": [
+        {
+          "type": "device",
+          "filler": "đèn"
+        },
+        {
+          "type": "target_number",
+          "filler": "50%"
+        }
+      ],
+      "augmented_entities": [
+        {
+          "type": "device",
+          "filler": "đèn"
+        },
+        {
+          "type": "target_number",
+          "filler": "50%"
+        }
+      ],
+      "method": "synonym_replacement",
+      "metadata": {
+        "method": "synonym_replacement",
+        "original_length": 6,
+        "augmented_length": 8,
+        "length_ratio": 1.3333333333333333,
+        "entity_count_preserved": true
+      },
+      "quality_passed": true,
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "giảm độ sáng đèn xuống 50%",
+      "augmented_sentence": "giảm độ sáng đèn xuống 50% nha",
+      "original_intent": "giảm độ sáng của thiết bị",
+      "augmented_intent": "giảm độ sáng của thiết bị",
+      "original_entities": [
+        {
+          "type": "device",
+          "filler": "đèn"
+        },
+        {
+          "type": "target_number",
+          "filler": "50%"
+        }
+      ],
+      "augmented_entities": [
+        {
+          "type": "device",
+          "filler": "đèn"
+        },
+        {
+          "type": "target_number",
+          "filler": "50%"
+        }
+      ],
+      "method": "politeness_addition",
+      "metadata": {
+        "method": "politeness_addition",
+        "original_length": 6,
+        "augmented_length": 7,
+        "length_ratio": 1.1666666666666667,
+        "entity_count_preserved": true
+      },
+      "quality_passed": true,
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "bật camera an ninh",
+      "augmented_sentence": "mở camera an ninh",
+      "original_intent": "bật thiết bị",
+      "augmented_intent": "bật thiết bị",
+      "original_entities": [
+        {
+          "type": "device",
+          "filler": "camera an ninh"
+        }
+      ],
+      "augmented_entities": [
+        {
+          "type": "device",
+          "filler": "camera an ninh"
+        }
+      ],
+      "method": "synonym_replacement",
+      "metadata": {
+        "method": "synonym_replacement",
+        "original_length": 4,
+        "augmented_length": 4,
+        "length_ratio": 1.0,
+        "entity_count_preserved": true
+      },
+      "quality_passed": true,
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "tắt tất cả đèn trong nhà",
+      "augmented_sentence": "đóng tất cả đèn trong nhà",
+      "original_intent": "tắt thiết bị",
+      "augmented_intent": "tắt thiết bị",
+      "original_entities": [
+        {
+          "type": "device",
+          "filler": "tất cả đèn"
+        },
+        {
+          "type": "living_space",
+          "filler": "trong nhà"
+        }
+      ],
+      "augmented_entities": [
+        {
+          "type": "device",
+          "filler": "tất cả đèn"
+        },
+        {
+          "type": "living_space",
+          "filler": "trong nhà"
+        }
+      ],
+      "method": "synonym_replacement",
+      "metadata": {
+        "method": "synonym_replacement",
+        "original_length": 6,
+        "augmented_length": 6,
+        "length_ratio": 1.0,
+        "entity_count_preserved": true
+      },
+      "quality_passed": true,
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "tắt tất cả đèn trong nhà",
+      "augmented_sentence": "tắt tất cả đèn trong nhà được chứ",
+      "original_intent": "tắt thiết bị",
+      "augmented_intent": "tắt thiết bị",
+      "original_entities": [
+        {
+          "type": "device",
+          "filler": "tất cả đèn"
+        },
+        {
+          "type": "living_space",
+          "filler": "trong nhà"
+        }
+      ],
+      "augmented_entities": [
+        {
+          "type": "device",
+          "filler": "tất cả đèn"
+        },
+        {
+          "type": "living_space",
+          "filler": "trong nhà"
+        }
+      ],
+      "method": "politeness_addition",
+      "metadata": {
+        "method": "politeness_addition",
+        "original_length": 6,
+        "augmented_length": 8,
+        "length_ratio": 1.3333333333333333,
+        "entity_count_preserved": true
+      },
+      "quality_passed": true,
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "tắt tất cả đèn trong nhà",
+      "augmented_sentence": "trong nhà, tắt tất cả đèn",
+      "original_intent": "tắt thiết bị",
+      "augmented_intent": "tắt thiết bị",
+      "original_entities": [
+        {
+          "type": "device",
+          "filler": "tất cả đèn"
+        },
+        {
+          "type": "living_space",
+          "filler": "trong nhà"
+        }
+      ],
+      "augmented_entities": [
+        {
+          "type": "device",
+          "filler": "tất cả đèn"
+        },
+        {
+          "type": "living_space",
+          "filler": "trong nhà"
+        }
+      ],
+      "method": "sentence_restructuring",
+      "metadata": {
+        "method": "sentence_restructuring",
+        "original_length": 6,
+        "augmented_length": 6,
+        "length_ratio": 1.0,
+        "entity_count_preserved": true
+      },
+      "quality_passed": true,
+      "timestamp": "2025-07-16T22:18:49.714094"
+    }
+  ]
+}

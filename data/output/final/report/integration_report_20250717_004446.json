@@ -1,0 +1,11 @@
+{
+  "report_generated_at": "2025-07-17T00:44:46.911434",
+  "total_samples_in_review_file": 100,
+  "approved_samples_count": 56,
+  "rejected_samples_count": 44,
+  "explicitly_approved_count": 56,
+  "explicitly_rejected_count": 44,
+  "score_based_approvals_count": 65,
+  "integration_strategy": "balanced",
+  "notes": "This report summarizes the integration of human-reviewed augmented samples."
+}

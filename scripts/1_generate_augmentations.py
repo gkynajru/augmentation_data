@@ -112,7 +112,6 @@ def create_review_csv(augmentations: list, output_dir: str, timestamp: str, max_
             'Augmentation_Method',
             'Quality_Score_1_5',
             'Naturalness_Score_1_5',
-            'Comments',
             'Approved_Yes_No'
         ])
         

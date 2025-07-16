@@ -1,0 +1,277 @@
+{
+  "dataset_analysis": {
+    "total_samples": 21,
+    "intent_distribution": {
+      "bật thiết bị": 4,
+      "tắt thiết bị": 3,
+      "tăng độ sáng của thiết bị": 1,
+      "giảm âm lượng của thiết bị": 1,
+      "kiểm tra tình trạng thiết bị": 1,
+      "mở thiết bị": 1,
+      "đóng thiết bị": 1,
+      "tăng nhiệt độ của thiết bị": 1,
+      "phát nhạc": 1,
+      "tắt nhạc": 1,
+      "hẹn giờ tự động": 1,
+      "hủy hẹn giờ": 1,
+      "hỏi thời tiết": 1,
+      "hỏi giờ": 1,
+      "tăng tốc độ quạt": 1,
+      "giảm độ sáng của thiết bị": 1
+    },
+    "entity_distribution": {
+      "device": 17,
+      "living_space": 5,
+      "time_at": 3,
+      "duration": 1,
+      "delay_duration": 1,
+      "target_number": 3,
+      "music_genre": 1
+    },
+    "rare_intents": [
+      "kiểm tra tình trạng thiết bị",
+      "tăng tốc độ quạt",
+      "phát nhạc",
+      "tắt thiết bị",
+      "tăng nhiệt độ của thiết bị",
+      "giảm âm lượng của thiết bị",
+      "đóng thiết bị",
+      "tắt nhạc",
+      "hỏi thời tiết",
+      "hỏi giờ",
+      "giảm độ sáng của thiết bị",
+      "bật thiết bị",
+      "tăng độ sáng của thiết bị",
+      "hủy hẹn giờ",
+      "hẹn giờ tự động",
+      "mở thiết bị"
+    ],
+    "rare_entities": [
+      "device",
+      "music_genre",
+      "target_number",
+      "delay_duration",
+      "time_at",
+      "duration",
+      "living_space"
+    ],
+    "unique_intents": 16,
+    "unique_entities": 7,
+    "augmentation_targets": {
+      "intent_targets": 16,
+      "entity_targets": 7
+    }
+  },
+  "generation_statistics": {
+    "processed_samples": 21,
+    "total_generated": 35,
+    "total_failed": 28,
+    "success_rate": 0.5555555555555556,
+    "method_breakdown": {
+      "synonym_replacement": 15,
+      "politeness_addition": 14,
+      "sentence_restructuring": 6
+    },
+    "quality_issue_count": 28,
+    "timestamp": "2025-07-16T22:18:49.719088"
+  },
+  "quality_issues": [
+    {
+      "original_sentence": "bật đèn phòng khách",
+      "augmented_sentence": "bật đèn phòng khách",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-16T22:18:49.713102"
+    },
+    {
+      "original_sentence": "bật đèn phòng khách",
+      "augmented_sentence": "bật đèn phòng khách",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "tắt máy lạnh",
+      "augmented_sentence": "Bạn ơi tắt máy lạnh được chứ",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "tắt máy lạnh",
+      "augmented_sentence": "tắt máy lạnh",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "tăng độ sáng đèn bàn",
+      "augmented_sentence": "tăng độ sáng đèn bàn",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "kiểm tra tình trạng điều hòa",
+      "augmented_sentence": "kiểm tra tình trạng điều hòa",
+      "method": "synonym_replacement",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "kiểm tra tình trạng điều hòa",
+      "augmented_sentence": "kiểm tra tình trạng điều hòa",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "mở cửa chính lúc 8 giờ tối",
+      "augmented_sentence": "mở cửa chính lúc 8 giờ tối",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "đóng rèm phòng ngủ",
+      "augmented_sentence": "đóng rèm phòng ngủ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "tắt tivi sau 1 tiếng",
+      "augmented_sentence": "tắt tivi sau 1 tiếng",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "điều chỉnh nhiệt độ điều hòa 25 độ",
+      "augmented_sentence": "điều chỉnh nhiệt độ điều hòa 25 độ",
+      "method": "synonym_replacement",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "điều chỉnh nhiệt độ điều hòa 25 độ",
+      "augmented_sentence": "điều chỉnh nhiệt độ điều hòa 25 độ",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "phát nhạc rock",
+      "augmented_sentence": "phát nhạc rock",
+      "method": "synonym_replacement",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "phát nhạc rock",
+      "augmented_sentence": "phát nhạc rock",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "dừng nhạc",
+      "augmented_sentence": "dừng nhạc",
+      "method": "synonym_replacement",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "dừng nhạc",
+      "augmented_sentence": "dừng nhạc",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "hủy hẹn giờ tắt quạt",
+      "augmented_sentence": "hủy hẹn giờ tắt quạt",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "hủy hẹn giờ tắt quạt",
+      "augmented_sentence": "hủy hẹn giờ tắt quạt",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "hỏi thời tiết hôm nay",
+      "augmented_sentence": "hỏi thời tiết hôm nay",
+      "method": "synonym_replacement",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "hỏi thời tiết hôm nay",
+      "augmented_sentence": "hỏi thời tiết hôm nay",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "mấy giờ rồi",
+      "augmented_sentence": "mấy giờ rồi",
+      "method": "synonym_replacement",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "mấy giờ rồi",
+      "augmented_sentence": "Có thể mấy giờ rồi được chứ",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "mấy giờ rồi",
+      "augmented_sentence": "mấy giờ rồi",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "bật lò vi sóng ở nhà bếp",
+      "augmented_sentence": "bật lò vi sóng ở nhà bếp",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "tăng tốc độ quạt lên mức 3",
+      "augmented_sentence": "tăng tốc độ quạt lên mức 3",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "giảm độ sáng đèn xuống 50%",
+      "augmented_sentence": "giảm độ sáng đèn xuống 50%",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "bật camera an ninh",
+      "augmented_sentence": "bật camera an ninh",
+      "method": "politeness_addition",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-16T22:18:49.714094"
+    },
+    {
+      "original_sentence": "bật camera an ninh",
+      "augmented_sentence": "bật camera an ninh",
+      "method": "sentence_restructuring",
+      "reason": "quality_check_failed",
+      "timestamp": "2025-07-16T22:18:49.714094"
+    }
+  ],
+  "timestamp": "20250716_221849"
+}

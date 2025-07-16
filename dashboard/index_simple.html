@@ -194,7 +194,7 @@
         // Display samples
         function displaySamples() {
             const container = document.getElementById('samples');
-            container.innerHTML = samples.slice(0, 20).map((sample, idx) => {
+            container.innerHTML = samples.map((sample, idx) => {
                 const approved = sample.Approved_Yes_No?.toLowerCase() === 'yes';
                 const rejected = sample.Approved_Yes_No?.toLowerCase() === 'no';
                 const className = approved ? 'approved' : (rejected ? 'rejected' : '');
@@ -230,9 +230,9 @@
                 `;
             }).join('');
             
-            if (samples.length > 20) {
-                container.innerHTML += '<p><em>Showing first 20 samples of ' + samples.length + '</em></p>';
-            }
+            // if (samples.length > 20) {
+            //     container.innerHTML += '<p><em>Showing first 20 samples of ' + samples.length + '</em></p>';
+            // }
         }
         
         // Actions
@@ -264,6 +264,78 @@
             document.getElementById('approvedCount').textContent = approved;
             document.getElementById('rejectedCount').textContent = rejected;
         }
+
+        // NEW: Function to normalize malformed JSON strings for export
+        function normalizeJsonStringForExport(jsonStr) {
+            if (!jsonStr || jsonStr.trim() === '') {
+                return '[]'; // Return empty JSON array for empty/null strings
+            }
+
+            let cleanedStr = jsonStr.trim();
+
+            // Remove leading/trailing quotes if the whole string is quoted (e.g., from CSV parsing, if `""[{...}]""`)
+            if (cleanedStr.length > 1 && cleanedStr.startsWith('"') && cleanedStr.endsWith('"')) {
+                cleanedStr = cleanedStr.substring(1, cleanedStr.length - 1);
+            }
+
+            // Attempt to transform unquoted keys and string values to valid JSON format.
+            // This regex matches "key: value" where key is a word and value is anything up to a comma or closing brace.
+            // It assumes values that are not numbers, booleans, or null should be quoted.
+            let transformedStr = cleanedStr.replace(/([\{\,]\s*)(\w+)\s*:\s*([^,\]\}]+)/g, (match, pre, key, value) => {
+                value = value.trim();
+                // Check if value needs to be quoted (i.e., it's not a number, boolean, or null)
+                if (!/^(true|false|null|-?\d+(\.\d+)?)$/.test(value)) {
+                    value = `"${value}"`;
+                }
+                return `${pre}"${key}": ${value}`;
+            });
+
+            try {
+                // Attempt to parse the transformed string
+                const parsed = JSON.parse(transformedStr);
+                return JSON.stringify(parsed); // Re-stringify to ensure consistent, valid JSON
+            } catch (e) {
+                // If still invalid, try a more aggressive fix for the specific [{key: value}] format
+                if (transformedStr.startsWith('[') && transformedStr.endsWith(']')) {
+                    const innerContent = transformedStr.substring(1, transformedStr.length - 1);
+                    // Split by objects, assuming they are {key:value, key2:value2} structure
+                    const objects = innerContent.split(/(?=\s*\{)/).filter(s => s.trim() !== ''); // Split by '{' that's preceded by optional space
+                    let fixedObjects = [];
+                    for (let objStr of objects) {
+                        // Ensure the object string starts with {
+                        if (!objStr.startsWith('{')) {
+                            objStr = '{' + objStr.trim();
+                        }
+                        
+                        // Fix internal key: value pairs within each object
+                        objStr = objStr.replace(/(\w+)\s*:\s*([^,}\]]+)/g, (match, key, value) => {
+                            key = key.trim();
+                            value = value.trim();
+                            if (!/^(true|false|null|-?\d+(\.\d+)?)$/.test(value)) {
+                                value = `"${value}"`;
+                            }
+                            return `"${key}": ${value}`;
+                        });
+                        
+                        try {
+                            fixedObjects.push(JSON.parse(objStr));
+                        } catch (e3) {
+                            console.warn('Deep fix failed for object:', objStr, 'Error:', e3);
+                            return '[]'; // Cannot fix, return empty
+                        }
+                    }
+                    try {
+                        return JSON.stringify(fixedObjects);
+                    } catch (e4) {
+                        console.warn('Final array stringify failed:', e4);
+                        return '[]'; // Cannot fix, return empty
+                    }
+                }
+
+                console.warn('Failed to normalize JSON string for export. Returning "[]". Original:', jsonStr, 'Attempted:', transformedStr, 'Error:', e);
+                return '[]'; // Fallback: If still invalid, return empty array to prevent downstream errors
+            }
+        }
         
         // Export functions with better error handling
         function exportCSV() {
@@ -275,11 +347,25 @@
                 
                 const headers = Object.keys(samples[0]);
                 const csvContent = [
-                    headers.join(','),
+                    headers.map(h => {
+                        // Ensure headers are quoted if they contain commas or quotes
+                        if (h.includes(',') || h.includes('"')) {
+                            return `"${h.replace(/"/g, '""')}"`;
+                        }
+                        return h;
+                    }).join(','),
                     ...samples.map(sample => 
                         headers.map(header => {
-                            const value = (sample[header] || '').toString();
-                            return value.includes(',') || value.includes('"') 
+                            let value = (sample[header] || '').toString();
+
+                            // Apply JSON normalization for specific entity columns
+                            if (header === 'Original_Entities' || header === 'Augmented_Entities') {
+                                value = normalizeJsonStringForExport(value);
+                            }
+
+                            // CSV escape logic (already existing)
+                            // Add newline to conditions for quoting to prevent issues with multi-line cells
+                            return value.includes(',') || value.includes('"') || value.includes('\n')
                                 ? `"${value.replace(/"/g, '""')}"` 
                                 : value;
                         }).join(',')
@@ -302,7 +388,34 @@
                     return;
                 }
                 
-                const jsonContent = JSON.stringify(samples, null, 2);
+                // When exporting to JSON, ensure entity fields are valid JSON objects/arrays
+                const samplesForJsonExport = samples.map(sample => {
+                    const newSample = { ...sample };
+                    if (newSample.Original_Entities) {
+                        try {
+                            newSample.Original_Entities = JSON.parse(normalizeJsonStringForExport(newSample.Original_Entities));
+                        } catch (e) {
+                            console.warn('Could not parse Original_Entities for JSON export, using empty array:', newSample.Original_Entities);
+                            newSample.Original_Entities = [];
+                        }
+                    } else {
+                        newSample.Original_Entities = [];
+                    }
+
+                    if (newSample.Augmented_Entities) {
+                        try {
+                            newSample.Augmented_Entities = JSON.parse(normalizeJsonStringForExport(newSample.Augmented_Entities));
+                        } catch (e) {
+                            console.warn('Could not parse Augmented_Entities for JSON export, using empty array:', newSample.Augmented_Entities);
+                            newSample.Augmented_Entities = [];
+                        }
+                    } else {
+                        newSample.Augmented_Entities = [];
+                    }
+                    return newSample;
+                });
+
+                const jsonContent = JSON.stringify(samplesForJsonExport, null, 2);
                 downloadFile(jsonContent, 'reviewed_samples.json', 'application/json');
                 showStatus('JSON exported successfully!');
                 
@@ -354,7 +467,32 @@
                     return;
                 }
                 
-                const text = JSON.stringify(samples, null, 2);
+                // Similar to exportJSON, ensure entities are valid JSON for copying
+                const samplesForClipboard = samples.map(sample => {
+                    const newSample = { ...sample };
+                    if (newSample.Original_Entities) {
+                        try {
+                            newSample.Original_Entities = JSON.parse(normalizeJsonStringForExport(newSample.Original_Entities));
+                        } catch (e) {
+                            newSample.Original_Entities = [];
+                        }
+                    } else {
+                        newSample.Original_Entities = [];
+                    }
+
+                    if (newSample.Augmented_Entities) {
+                        try {
+                            newSample.Augmented_Entities = JSON.parse(normalizeJsonStringForExport(newSample.Augmented_Entities));
+                        } catch (e) {
+                            newSample.Augmented_Entities = [];
+                        }
+                    } else {
+                        newSample.Augmented_Entities = [];
+                    }
+                    return newSample;
+                });
+
+                const text = JSON.stringify(samplesForClipboard, null, 2);
                 
                 if (navigator.clipboard && navigator.clipboard.writeText) {
                     navigator.clipboard.writeText(text).then(() => {
